@@ -5,7 +5,7 @@ import ReactPortal from './ReactPortal'
 import styles from '../styles/modalvideo.module.scss'
 import { AnimatePresence, motion } from 'framer-motion'
 import ReactPlayer from 'react-player'
-import { IoClose, IoPlayOutline, IoPause, IoPlaySkipForward, IoPlaySkipBack, IoVolumeMute, IoVolumeHigh, IoExpand, IoContract } from "react-icons/io5";
+import { IoClose, IoPlayOutline, IoPause, IoPlaySkipForward, IoPlaySkipBack, IoVolumeMute, IoVolumeHigh } from "react-icons/io5";
 
 
 
@@ -17,7 +17,7 @@ interface ModalVideoProps {
         src: string;
         poster: string;
         btnText: string;
-        index: string;
+        index: number;
         linkVideoLargo: string;
         linkcorto: string;
         Titulo: string;
@@ -31,7 +31,7 @@ interface ModalVideoProps {
         src: string;
         poster: string;
         btnText: string;
-        index: string;
+        index: number;
         linkVideoLargo: string;
         linkcorto: string;
         Titulo: string;
@@ -45,7 +45,7 @@ interface ModalVideoProps {
         src: string;
         poster: string;
         btnText: string;
-        index: string;
+        index: number;
         linkVideoLargo: string;
         linkcorto: string;
         Titulo: string;
@@ -59,6 +59,8 @@ interface ModalVideoProps {
     onPrevious: () => void;
     handlePlayPause: () => void;
 }
+
+
 const dropIn = {
     hidden: {
         y: "100vh",
@@ -92,17 +94,25 @@ const ModalVideo = ({
     onPrevious,
     handlePlayPause,
 }: ModalVideoProps) => {
-    //Cerrar con escape
+
+    const [isOverlayVisible, setIsOverlayVisible] = useState(true);
+    const [isCreditsVisible, setCreditsVisible] = useState(false);
+    const [isMuted, setIsMuted] = useState(false);
+    const [currentTime, setCurrentTime] = useState<number>(0);
+    const [duration, setDuration] = useState<number>(0);
+    const [hoverTime, setHoverTime] = useState<number | null>(null);
+
+    const overlayTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const playerRef = useRef<ReactPlayer>(null);
+
+    // Close with Escape key (always executed)
     useEffect(() => {
-        const closeOnEscapeKey = (e: KeyboardEvent) =>
-            e.key === 'Escape' ? handleClose() : null;
-        document.body.addEventListener('keydown', closeOnEscapeKey);
-        return () => {
-            document.body.removeEventListener('keydown', closeOnEscapeKey);
+        const closeOnEscapeKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') handleClose();
         };
+        document.body.addEventListener('keydown', closeOnEscapeKey);
+        return () => document.body.removeEventListener('keydown', closeOnEscapeKey);
     }, [handleClose]);
-
-
 
     //QuitarScroll
     useEffect(() => {
@@ -112,113 +122,74 @@ const ModalVideo = ({
         };
     }, [isOpen]);
 
-
-
-    // Manejo de mouse opacity PLAYPAUSE
-    const [isOverlayVisible, setIsOverlayVisible] = useState(true);
-    const overlayTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-    const resetOverlayVisibility = () => {
+    // Reset overlay visibility logic
+    const resetOverlayVisibility = useCallback(() => {
         if (!isPlaying) {
-            setIsOverlayVisible(true); // Siempre visible  en pausa
+            setIsOverlayVisible(true);
             if (overlayTimeoutRef.current) clearTimeout(overlayTimeoutRef.current);
         } else {
             setIsOverlayVisible(true);
             if (overlayTimeoutRef.current) clearTimeout(overlayTimeoutRef.current);
-            overlayTimeoutRef.current = setTimeout(() => {
-                setIsOverlayVisible(false); //
-            }, 2000);
-        }
-    };
-
-    // Listener de movimiento del mouse para mostrar el overlay temporalmente si está en reproducción
-    const handleMouseMove = useCallback(() => {
-        if (isPlaying) {
-            resetOverlayVisibility(); // Reinicia el temporizador al mover el mouse solo si está en play
+            overlayTimeoutRef.current = setTimeout(() => setIsOverlayVisible(false), 2000);
         }
     }, [isPlaying]);
 
-
-    // Estado del overlay según el estado de reproducción
+    // Handle mouse move to show/hide overlay
     useEffect(() => {
         resetOverlayVisibility();
-    }, [isPlaying]);
+    }, [isPlaying, resetOverlayVisibility]);
 
-    // Evento del mouse
     useEffect(() => {
-        window.addEventListener("mousemove", handleMouseMove);
-        return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, [handleMouseMove]);
+        const handleMouseMove = () => {
+            if (isPlaying) resetOverlayVisibility();
+        };
 
-    if (!isOpen) return null;
+        window.addEventListener('mousemove', handleMouseMove);
+        return () => window.removeEventListener('mousemove', handleMouseMove);
+    }, [isPlaying, resetOverlayVisibility]);
 
-    // Mostrar y ocultar los créditos
-    const [isCreditsVisible, setCreditsVisible] = useState(false);
-
+    // Show credits overlay
     const handleCreditsClick = () => {
-        setCreditsVisible(true); // Mostrar overlay de créditos
-        setIsOverlayVisible(false); // Ocultar el overlay principal
+        setCreditsVisible(true);
+        setIsOverlayVisible(false);
     };
 
     const handleCloseCredits = () => {
-        setCreditsVisible(false); // Ocultar overlay de créditos
-        setIsOverlayVisible(true); // Mostrar el overlay principal
+        setCreditsVisible(false);
+        setIsOverlayVisible(true);
     };
 
-    //MUTEO
-    const [isMuted, setIsMuted] = useState(false); // Estado para controlar el mute
-
+    // Mute/unmute control
     const handleMuteUnmute = () => {
         setIsMuted((prev) => !prev);
     };
 
-    //FULLSCREEN
-    const playerRef = useRef<ReactPlayer>(null);
-    //const [isFullScreen, setIsFullScreen] = useState(false);
-
-    //const handleFullScreenToggle = () => {
-    //    if (playerRef.current) {
-    //        if (!isFullScreen) {
-    //            playerRef.current.requestFullscreen();
-    //        } else if (document.fullscreenElement) {
-    //            document.exitFullscreen();
-    //        }
-    //        setIsFullScreen(!isFullScreen);
-    //    }
-    //};
-
-    //TIEMPO
-    const [currentTime, setCurrentTime] = useState<number>(0);
-    const [duration, setDuration] = useState<number>(0);
-
-    // Actualizar el tiempo transcurrido en un intervalo
+    // Update time tracking (current time and duration)
     useEffect(() => {
         const interval = setInterval(() => {
             if (playerRef.current) {
                 const time = playerRef.current.getCurrentTime();
                 setCurrentTime(time || 0);
             }
-        }, 100); // Actualizar 
-
+        }, 100);
         return () => clearInterval(interval);
     }, []);
 
-    // Obtener la duración total cuando el video está listo
+    // Get video duration when ready
     const handleReady = () => {
         if (playerRef.current) {
             const videoDuration = playerRef.current.getDuration();
             setDuration(videoDuration || 0);
         }
     };
+
     const formatTime = (seconds: number): string => {
         const minutes = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
         return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
     };
 
-    // Barra de progreso
-    const [hoverTime, setHoverTime] = useState<number | null>(null);
-
+    // Progress bar functionality
     const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (playerRef.current && duration) {
             const rect = e.currentTarget.getBoundingClientRect();
@@ -243,8 +214,6 @@ const ModalVideo = ({
     const handleMouseLeavePB = () => {
         setHoverTime(null);
     };
-
-
 
 
     return (
@@ -336,11 +305,11 @@ const ModalVideo = ({
                         >
                             {/* Barra de progreso llena */}
                             <motion.div
-                                initial={{ width: '0%'  }}
+                                initial={{ width: '0%' }}
                                 animate={{
                                     width: duration > 0 ? `${(currentTime / duration) * 100}%` : '0%' // Asegúrate de que duration no sea 0
                                 }}
-                                exit={{ width: '0%'  }}
+                                exit={{ width: '0%' }}
                                 transition={{ ease: "linear", duration: 0.2 }}
                                 style={{
                                     position: 'absolute',
@@ -486,7 +455,7 @@ const ModalVideo = ({
                                 {currentVideo.credits.map((credit, idxCredit) => (
                                     <React.Fragment key={idxCredit}>
                                         <div className="text-right text-sm">{credit.title}</div>
-                                        <div  className="text-left text-sm">{credit.value}</div>
+                                        <div className="text-left text-sm">{credit.value}</div>
                                     </React.Fragment>
                                 ))}
                             </div>

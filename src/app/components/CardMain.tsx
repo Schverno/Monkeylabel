@@ -7,18 +7,7 @@ import styles from '../styles/mainCard.module.scss';
 
 import ModalVideo from './ModalVideo';
 
-function throttle<T extends (...args: any[]) => void>(func: T, limit: number): (...args: Parameters<T>) => void {
-    let inThrottle: boolean;
-    return function (...args: Parameters<T>) {
-        if (!inThrottle) {
-            func.apply(this, args);
-            inThrottle = true;
-            setTimeout(() => {
-                inThrottle = false;
-            }, limit);
-        }
-    };
-}
+
 
 interface CardMainProps {
     src: string;
@@ -29,7 +18,7 @@ interface CardMainProps {
         src: string;
         poster: string;
         btnText: string;
-        index: string;
+        index: number;
         linkVideoLargo: string;
         linkcorto: string;
         Titulo: string;
@@ -103,27 +92,22 @@ const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos
         });
     };
 
-     // Throttled versions of handleNext and handlePrevious
-     const throttledHandleNext = throttle(handleNext, 2000); // Limitar a 1 llamada por segundo
-     const throttledHandlePrevious = throttle(handlePrevious, 2000); // Limitar a 1 llamada por segundo
- 
+  
 
     // Videos actual, siguiente y anterior basado en currentIndex
     const currentVideo = videos[currentIndex];
     const previousVideo = videos[(currentIndex - 1 + videos.length) % videos.length];
     const nextVideo = videos[(currentIndex + 1) % videos.length];
 
-
-
     const [isDragging, setIsDragging] = useState(false);
     const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
 
-    const handleMouseDown = (e) => {
+    const handleMouseDown = (e: React.MouseEvent) => {
         setIsDragging(false);
         setStartPosition({ x: e.clientX, y: e.clientY }); // Guarda la posición inicial
     };
 
-    const handleMouseUp = (e) => {
+    const handleMouseUp = (e: React.MouseEvent) => {
         const distance = Math.sqrt(
             Math.pow(e.clientX - startPosition.x, 2) + Math.pow(e.clientY - startPosition.y, 2)
         );
@@ -216,8 +200,8 @@ const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos
                         nextVideo={nextVideo}
                         isPlaying={isPlaying}
                         handlePlayPause={() => setIsPlaying(!isPlaying)}
-                        onNext={throttledHandleNext} 
-                        onPrevious={throttledHandlePrevious} 
+                        onNext={handleNext} 
+                        onPrevious={handlePrevious} 
                     >
                     </ModalVideo>
 

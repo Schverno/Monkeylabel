@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { PageWrapper } from '@/app/components/page-wrapper';
@@ -121,7 +122,7 @@ export default function About() {
                       transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
                     >
                       <p>Monkey Label Films is a creative production company founded by partners dedicated to crafting audiovisual projects with a unique impact. We are driven by a commitment to creative storytelling and exceptional visual quality.</p>
-                      <p>With international production capabilities, our passion for filmmaking has led to collaborations with some of the industry's most renowned platforms, leading artists, and cutting-edge brands.</p>
+                      <p>With international production capabilities, our passion for filmmaking has led to collaborations with some of the industry&rsquo;s most renowned platforms, leading artists, and cutting-edge brands.</p>
                       <p>Our team includes internationally acclaimed directors and producers who are deeply committed to inclusion and diversity in all our content.</p>
                       <p>At Monkey Label Films, every project reflects our artistic and creative vision, giving each narrative a distinct identity, a label with its own signature.</p>
                     </motion.div>

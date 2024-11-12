@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, Suspense } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import styles from '../styles/layoutnested.module.scss';
@@ -9,6 +9,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import FooterNested from '../components/footerNested';
 import { IoClose } from 'react-icons/io5';
 import { RiMenuLine } from "react-icons/ri";
+
+type Category = 'DOCUMENTARY' | 'COMMERCIALS' | 'MUSIC';
 
 export default function NestedLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -184,8 +186,8 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
                       onClick={() => handleSelect(category)}
                       whileHover={{ y: -30 }}
                       animate={{ opacity: selectedCategory === category ? 1 : 0.5 }}
-                      
-                      
+
+
                     >
                       <span className={`flex items-center h-[30px]`}>
                         {category}
@@ -302,7 +304,9 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
         </AnimatePresence>
 
         <div className={styles.paddingChildren}>
-          {children}
+          <Suspense fallback={<div>Loading...</div>}>
+            {children}
+          </Suspense>
         </div>
 
       </div>

@@ -5,19 +5,6 @@ import { AnimatePresence, motion } from 'framer-motion'
 import ReactPlayer from 'react-player'
 import ModalVideo from './ModalVideo';
 
-function throttle<T extends (...args: any[]) => void>(func: T, limit: number): (...args: Parameters<T>) => void {
-    let inThrottle: boolean;
-    return function (...args: Parameters<T>) {
-        if (!inThrottle) {
-            func.apply(this, args);
-            inThrottle = true;
-            setTimeout(() => {
-                inThrottle = false;
-            }, limit);
-        }
-    };
-}
-
 interface CardMainProps {
     src: string;
     indexCardWork: number;
@@ -29,7 +16,7 @@ interface CardMainProps {
         src: string;
         poster: string;
         btnText: string;
-        index: string;
+        index: number;
         linkVideoLargo: string;
         linkcorto: string;
         Titulo: string;
@@ -41,7 +28,7 @@ interface CardMainProps {
     }[];
 }
 
-const CardWork: React.FC<CardMainProps> = ({ src, poster, btnText,linkLargo, indexCardWork, videos, linkcorto }) => {
+const CardWork: React.FC<CardMainProps> = ({ indexCardWork, videos, linkcorto }) => {
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
@@ -74,9 +61,6 @@ const CardWork: React.FC<CardMainProps> = ({ src, poster, btnText,linkLargo, ind
         });
     };
 
-    // Throttled versions of handleNext and handlePrevious
-    const throttledHandleNext = throttle(handleNext, 2000); // Limitar a 1 llamada por segundo
-    const throttledHandlePrevious = throttle(handlePrevious, 2000); // Limitar a 1 llamada por segundo
 
 
     // Videos actual, siguiente y anterior basado en currentIndex
@@ -129,8 +113,8 @@ const CardWork: React.FC<CardMainProps> = ({ src, poster, btnText,linkLargo, ind
                         nextVideo={nextVideo}
                         isPlaying={isPlaying}
                         handlePlayPause={handlePlayPause}
-                        onNext={throttledHandleNext}
-                        onPrevious={throttledHandlePrevious}
+                        onNext={handleNext}
+                        onPrevious={handlePrevious}
                     >
                     </ModalVideo>
 
