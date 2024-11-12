@@ -1,12 +1,15 @@
 'use client'
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { PageWrapper } from '@/app/components/page-wrapper';
-import { useSearchParams } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from '@/app/styles/work.module.scss'
 import CardWork from '../../components/CardWork';
 
-const WorkPage = () => {
+type Category = 'DOCUMENTARY' | 'COMMERCIALS' | 'MUSIC';
+
+
+const UpdatePrompt = () => {
   const videosDOCUMENTARY = [
 
     {
@@ -73,7 +76,7 @@ const WorkPage = () => {
       Titulo: "Valeria Mazza",
       Label: "Paramount+",
       linkVideoLargo: "https://player.vimeo.com/video/1015322584",
-      linkcorto: "/mainVideos/valeria.mp4",  
+      linkcorto: "/mainVideos/valeria.mp4",
       credits: [
         { title: "Client", value: "Paramount+" },
         { title: "Production Company", value: "100 Bares" },
@@ -484,10 +487,6 @@ const WorkPage = () => {
   ];
 
 
-
-  const searchParams = useSearchParams();
-  const category = searchParams.get('category');
-
   //DOCUMENTARY HEIGHT
   const containerWorkDivRef = useRef<HTMLDivElement | null>(null);
   const [containerHeight, setContainerHeight] = useState('auto');
@@ -512,214 +511,239 @@ const WorkPage = () => {
       }
     };
   }, []);
+
+  const [selectedCategory, setSelectedCategory] = useState<Category>('DOCUMENTARY');
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  useEffect(() => {
+    const category = searchParams.get('category');
+    if (category && ['DOCUMENTARY', 'COMMERCIALS', 'MUSIC'].includes(category)) {
+      setSelectedCategory(category as Category);
+    } else {
+      router.push('/info/work?category=DOCUMENTARY');
+    }
+  }, [searchParams, router]);
+
+
   return (
     <PageWrapper>
-      <div className={styles.containerWork}
-        style={{ minHeight: containerHeight }}
-      >
-
-        <div
-          className={styles.containerWorkDiv}
-          ref={containerWorkDivRef}
+      <Suspense >
+        <div className={styles.containerWork}
+          style={{ minHeight: containerHeight }}
         >
-          <AnimatePresence >
-            {category === 'DOCUMENTARY' &&
-              <motion.div
-                initial={{ opacity: 0, translateY: 50 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                exit={{ opacity: 0, translateY: -25 }}
-                transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
-                className={styles.containerVideos}
-              >
-                {[...videosDOCUMENTARY].map((video, idxWork) => (
+
+          <div
+            className={styles.containerWorkDiv}
+            ref={containerWorkDivRef}
+          >
+            <AnimatePresence >
+              {selectedCategory === 'DOCUMENTARY' &&
+                <motion.div
+                  initial={{ opacity: 0, translateY: 50 }}
+                  animate={{ opacity: 1, translateY: 0 }}
+                  exit={{ opacity: 0, translateY: -25 }}
+                  transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
+                  className={styles.containerVideos}
+                >
+                  {[...videosDOCUMENTARY].map((video, idxWork) => (
+                    <motion.div
+                      key={idxWork}
+                      variants={{
+                        hidden: {
+                          opacity: 0,
+                          scaleY: 0.7,
+                          scaleX: 0.8,
+                        },
+                        translatePhase: {
+                          opacity: 1,
+                          scaleX: 1,
+                          scaleY: 1,
+                          transition: {
+                            ease: [0.76, 0, 0.24, 1],
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 20,
+                            duration: 1,
+                            delay: idxWork * 0.33
+                          }
+                        },
+                      }}
+                      initial="hidden"
+                      animate="translatePhase"
+                      exit={{
+                        opacity: 0,
+                        scaleX: 0.9,
+                        scaleY: 0.9,
+                        translateY: -5,
+                        transition: {
+                          ease: [0.76, 0, 0.24, 1],
+                          duration: 0.5,
+                        }
+                      }}
+                      className={styles.containerVideosIN}
+                    >
+                      <div className={styles.video}>
+                        <CardWork src={video.src} linkcorto={video.linkcorto} linkLargo={video.linkVideoLargo} btnText={video.btnText} poster={video.poster} key={idxWork} indexCardWork={video.index} videos={videosDOCUMENTARY} />
+                      </div>
+                      <div className={styles.videoText}>
+                        <p>{video.btnText} </p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              }
+            </AnimatePresence>
+          </div>
+
+          <div className={styles.containerWorkDiv}>
+            <AnimatePresence mode='wait'>
+              {selectedCategory === 'COMMERCIALS' &&
+                <motion.div
+                  initial={{ opacity: 0, translateY: 50 }}
+                  animate={{ opacity: 1, translateY: 0 }}
+                  exit={{ opacity: 0, translateY: -25 }}
+                  transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
+                >
                   <motion.div
-                    key={idxWork}
-                    variants={{
-                      hidden: {
-                        opacity: 0,
-                        scaleY: 0.7,
-                        scaleX: 0.8,
-                      },
-                      translatePhase: {
-                        opacity: 1,
-                        scaleX: 1,
-                        scaleY: 1,
-                        transition: {
-                          ease: [0.76, 0, 0.24, 1],
-                          type: "spring",
-                          stiffness: 200,
-                          damping: 20,
-                          duration: 1,
-                          delay: idxWork * 0.33
-                        }
-                      },
-                    }}
-                    initial="hidden"
-                    animate="translatePhase"
-                    exit={{
-                      opacity: 0,
-                      scaleX: 0.9,
-                      scaleY: 0.9,
-                      translateY: -5,
-                      transition: {
-                        ease: [0.76, 0, 0.24, 1],
-                        duration: 0.5,
-                      }
-                    }}
-                    className={styles.containerVideosIN}
+                    initial={{ opacity: 0, translateY: 50 }}
+                    animate={{ opacity: 1, translateY: 0 }}
+                    exit={{ opacity: 0, translateY: -25 }}
+                    transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
+                    className={styles.containerVideos}
                   >
-                    <div className={styles.video}>
-                      <CardWork src={video.src} linkcorto={video.linkcorto} linkLargo={video.linkVideoLargo} btnText={video.btnText} poster={video.poster} key={idxWork} indexCardWork={video.index} videos={videosDOCUMENTARY} />
-                    </div>
-                    <div className={styles.videoText}>
-                      <p>{video.btnText} </p>
-                    </div>
+                    {[...videosCOMMERCIALS].map((video, idxCOM) => (
+                      <motion.div
+                        key={idxCOM}
+                        variants={{
+                          hidden: {
+                            opacity: 0,
+                            scaleY: 0.7,
+                            scaleX: 0.8,
+                          },
+                          translatePhase: {
+                            opacity: 1,
+                            scaleX: 1,
+                            scaleY: 1,
+                            transition: {
+                              ease: [0.76, 0, 0.24, 1],
+                              type: "spring",
+                              stiffness: 200,
+                              damping: 20,
+                              duration: 1,
+                              delay: idxCOM * 0.33
+                            }
+                          },
+                        }}
+                        initial="hidden"
+                        animate="translatePhase"
+                        exit={{
+                          opacity: 0,
+                          scaleX: 0.9,
+                          scaleY: 0.9,
+                          translateY: -5,
+                          transition: {
+                            ease: [0.76, 0, 0.24, 1],
+                            duration: 0.5,
+                          }
+                        }}
+                        className={styles.containerVideosIN}
+                      >
+                        <div className={styles.video}>
+                          <CardWork src={video.src} linkcorto={video.linkcorto} linkLargo={video.linkVideoLargo} btnText={video.btnText} poster={video.poster} key={idxCOM} indexCardWork={video.index} videos={videosCOMMERCIALS} />
+                        </div>
+                        <div className={styles.videoText}>
+                          <p>{video.btnText} </p>
+                        </div>
+                      </motion.div>
+                    ))}
                   </motion.div>
-                ))}
-              </motion.div>
-            }
-          </AnimatePresence>
-        </div>
+                </motion.div>
+              }
+            </AnimatePresence>
+          </div>
 
-        <div className={styles.containerWorkDiv}>
-          <AnimatePresence mode='wait'>
-            {category === 'COMMERCIALS' &&
-              <motion.div
-                initial={{ opacity: 0, translateY: 50 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                exit={{ opacity: 0, translateY: -25 }}
-                transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
-              >
+          <div className={styles.containerWorkDiv}>
+            <AnimatePresence mode='wait'>
+              {selectedCategory === 'MUSIC' &&
                 <motion.div
                   initial={{ opacity: 0, translateY: 50 }}
                   animate={{ opacity: 1, translateY: 0 }}
                   exit={{ opacity: 0, translateY: -25 }}
                   transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
-                  className={styles.containerVideos}
                 >
-                  {[...videosCOMMERCIALS].map((video, idxCOM) => (
-                    <motion.div
-                      key={idxCOM}
-                      variants={{
-                        hidden: {
+                  <motion.div
+                    initial={{ opacity: 0, translateY: 50 }}
+                    animate={{ opacity: 1, translateY: 0 }}
+                    exit={{ opacity: 0, translateY: -25 }}
+                    transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
+                    className={styles.containerVideos}
+                  >
+                    {[...videosMUSIC].map((video, idxMUSIC) => (
+                      <motion.div
+                        key={idxMUSIC}
+                        variants={{
+                          hidden: {
+                            opacity: 0,
+                            scaleY: 0.7,
+                            scaleX: 0.8,
+                          },
+                          translatePhase: {
+                            opacity: 1,
+                            scaleX: 1,
+                            scaleY: 1,
+                            transition: {
+                              ease: [0.76, 0, 0.24, 1],
+                              type: "spring",
+                              stiffness: 200,
+                              damping: 20,
+                              duration: 1,
+                              delay: idxMUSIC * 0.33
+                            }
+                          },
+                        }}
+                        initial="hidden"
+                        animate="translatePhase"
+                        exit={{
                           opacity: 0,
-                          scaleY: 0.7,
-                          scaleX: 0.8,
-                        },
-                        translatePhase: {
-                          opacity: 1,
-                          scaleX: 1,
-                          scaleY: 1,
+                          scaleX: 0.9,
+                          scaleY: 0.9,
+                          translateY: -5,
                           transition: {
                             ease: [0.76, 0, 0.24, 1],
-                            type: "spring",
-                            stiffness: 200,
-                            damping: 20,
-                            duration: 1,
-                            delay: idxCOM * 0.33
+                            duration: 0.5,
                           }
-                        },
-                      }}
-                      initial="hidden"
-                      animate="translatePhase"
-                      exit={{
-                        opacity: 0,
-                        scaleX: 0.9,
-                        scaleY: 0.9,
-                        translateY: -5,
-                        transition: {
-                          ease: [0.76, 0, 0.24, 1],
-                          duration: 0.5,
-                        }
-                      }}
-                      className={styles.containerVideosIN}
-                    >
-                      <div className={styles.video}>
-                        <CardWork src={video.src} linkcorto={video.linkcorto} linkLargo={video.linkVideoLargo} btnText={video.btnText} poster={video.poster} key={idxCOM} indexCardWork={video.index} videos={videosCOMMERCIALS} />
-                      </div>
-                      <div className={styles.videoText}>
-                        <p>{video.btnText} </p>
-                      </div>
-                    </motion.div>
-                  ))}
+                        }}
+                        className={styles.containerVideosIN}
+                      >
+                        <div className={styles.video}>
+                          <CardWork src={video.src} linkcorto={video.linkcorto} linkLargo={video.linkVideoLargo} btnText={video.btnText} poster={video.poster} key={idxMUSIC} indexCardWork={video.index} videos={videosMUSIC} />
+                        </div>
+                        <div className={styles.videoText}>
+                          <p>{video.btnText} </p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            }
-          </AnimatePresence>
+              }
+            </AnimatePresence>
+          </div>
+
+
         </div>
-
-        <div className={styles.containerWorkDiv}>
-          <AnimatePresence mode='wait'>
-            {category === 'MUSIC' &&
-              <motion.div
-                initial={{ opacity: 0, translateY: 50 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                exit={{ opacity: 0, translateY: -25 }}
-                transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
-              >
-                <motion.div
-                  initial={{ opacity: 0, translateY: 50 }}
-                  animate={{ opacity: 1, translateY: 0 }}
-                  exit={{ opacity: 0, translateY: -25 }}
-                  transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
-                  className={styles.containerVideos}
-                >
-                  {[...videosMUSIC].map((video, idxMUSIC) => (
-                    <motion.div
-                      key={idxMUSIC}
-                      variants={{
-                        hidden: {
-                          opacity: 0,
-                          scaleY: 0.7,
-                          scaleX: 0.8,
-                        },
-                        translatePhase: {
-                          opacity: 1,
-                          scaleX: 1,
-                          scaleY: 1,
-                          transition: {
-                            ease: [0.76, 0, 0.24, 1],
-                            type: "spring",
-                            stiffness: 200,
-                            damping: 20,
-                            duration: 1,
-                            delay: idxMUSIC * 0.33
-                          }
-                        },
-                      }}
-                      initial="hidden"
-                      animate="translatePhase"
-                      exit={{
-                        opacity: 0,
-                        scaleX: 0.9,
-                        scaleY: 0.9,
-                        translateY: -5,
-                        transition: {
-                          ease: [0.76, 0, 0.24, 1],
-                          duration: 0.5,
-                        }
-                      }}
-                      className={styles.containerVideosIN}
-                    >
-                      <div className={styles.video}>
-                        <CardWork src={video.src} linkcorto={video.linkcorto} linkLargo={video.linkVideoLargo} btnText={video.btnText} poster={video.poster} key={idxMUSIC} indexCardWork={video.index} videos={videosMUSIC} />
-                      </div>
-                      <div className={styles.videoText}>
-                        <p>{video.btnText} </p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </motion.div>
-            }
-          </AnimatePresence>
-        </div>
-
-
-      </div>
+      </Suspense>
 
     </PageWrapper>
   );
+}
+
+const WorkPage = () => {
+  return (
+      <Suspense fallback={null}>
+          <UpdatePrompt />
+      </Suspense>
+  )
 }
 
 export default WorkPage;

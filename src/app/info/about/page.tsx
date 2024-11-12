@@ -6,6 +6,7 @@ import { PageWrapper } from '@/app/components/page-wrapper';
 import styles from '@/app/styles/about.module.scss'
 import { AnimatePresence, motion } from "framer-motion";
 
+
 interface LogoItemProps {
   src: string;
   alt: string;

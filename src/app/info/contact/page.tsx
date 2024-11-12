@@ -4,8 +4,11 @@ import React from 'react';
 import { PageWrapper } from '@/app/components/page-wrapper';
 import styles from '@/app/styles/contact.module.scss'
 
+
+
 export default function Contact() {
   return (
+
     <PageWrapper>
       <div className={styles.containerContacto}>
         <div className={styles.Card}>
