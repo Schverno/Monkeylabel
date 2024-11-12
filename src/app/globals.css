@@ -2,9 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+::selection {
+  background-color: #000;
+  color: #ffffff;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --hmaincards: 550px;         /* Altura base */
+  --additional-height: 50px;   /* Altura adicional */
+  --wmaincards: 350px;         /* Ancho base */
+  --font-archivo: 'Archivo', sans-serif;
+  --font-raleway: 'Raleway', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,14 +24,37 @@
   }
 }
 
+@media (max-width: 768px) {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --hmaincards: 60vh;         /* Altura base */
+    --additional-height: 80px;   /* Altura adicional */
+    --wmaincards: 350px;         /* Ancho base */
+  
+  }
+}
+
+html{
+  background: var(--background);
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-archivo)
+}
+
+h1, h2, h3, h4, h5, h6, a {
+  font-family: var(--font-raleway); /* Ejemplo de cómo aplicar Archivo */
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+#detach-button-host{
+  display: none;
 }

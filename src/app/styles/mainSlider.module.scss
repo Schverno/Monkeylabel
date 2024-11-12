@@ -1,0 +1,16 @@
+
+
+.main {
+    display: flex;
+    height: calc(var(--hmaincards) + var(--additional-height));
+    align-items: center;
+    overflow: hidden;
+    width: 100vw;
+    position: relative;
+   
+}
+
+.mainSliderContainer {
+    overflow-x: visible;
+    overflow-y: visible;
+}

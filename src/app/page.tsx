@@ -1,101 +1,243 @@
-import Image from "next/image";
+'use client'
+
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import styles from './styles/main.module.scss';
+import { FaFacebookF, FaXTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
+
+import MainSlider from './components/mainSlider'
+
+
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isCentered, setIsCentered] = useState<boolean>(true);
+  const [siguiente, setSiguiente] = useState<boolean>(true);
+  const [isAnimationComplete, setIsAnimationComplete] = useState(false);
+  const [showMainSlider, setShowMainSlider] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsCentered(false);
+      setSiguiente(false);
+    }, 2000);
+
+    const timerdos = setTimeout(() => {
+      setIsAnimationComplete(true)
+      setShowMainSlider(true);
+    }, 2600);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(timerdos);
+    }
+
+
+  }, []);
+
+  const menuLinkVariants = {
+    open: {
+      y: 0,
+      opacity: 1,
+    },
+    closed: {
+      y: -10,
+      opacity: 0,
+    },
+  };
+
+  const MENULINKS = [
+    {
+      text: "WORK",
+      href: "/info/work",
+    },
+    {
+      text: "ABOUT",
+      href: "/info/about",
+    },
+    {
+      text: "CONTACT",
+      href: "/info/contact",
+    },
+  ];
+
+
+
+  const MenuLink = () => {
+    return (
+      <>
+        <div className={styles.containerMenuMain}>
+
+          {MENULINKS.map((ml, idx) => {
+            return (
+              <motion.a
+                key={idx}
+                href={ml.href}
+                variants={menuLinkVariants}
+                initial={{
+                  opacity: 0,
+                }}
+                animate={{
+                  opacity: 1,
+                  transition: {
+                    delay: 3 + idx * 0.225,
+                    duration: 0.8,
+                    ease: [0.76, 0, 0.24, 1]
+                  },
+                }}
+                rel="nofollow"
+                target="_self"
+                className="h-[30px] overflow-hidden font-medium text-lg flex items-start gap-2"
+              >
+                <motion.div whileHover={{ y: -30 }}>
+                  <span className="flex items-center h-[30px] text-gray-500">{ml.text}</span>
+                  <span className="flex items-center h-[30px] ">{ml.text}</span>
+                </motion.div>
+              </motion.a>
+            );
+          })}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </>
+    );
+  };
+
+  const SOCIAL_CTAS = [
+    {
+      Component: FaFacebookF,
+      href: "https://www.facebook.com",
+    },
+    {
+      Component: FaInstagram,
+      href: "https://www.instagram.com",
+    },
+    {
+      Component: FaXTwitter,
+      href: "https://www.x.com",
+    },
+    {
+      Component: FaLinkedinIn,
+      href: "https://www.linkedin.com",
+    },
+  ];
+
+  const FooterCTAs = () => {
+    return (
+      <>
+        <div className={styles.containerRedes}>
+          {SOCIAL_CTAS.map((l, idx) => {
+            return (
+              <motion.a
+                key={idx}
+                href={l.href}
+                target="_blank"
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    delay: 5 + idx * 0.225,
+                    duration: 0.5,
+                    ease: [0.76, 0, 0.24, 1]
+                  },
+                }}
+              >
+                <l.Component />
+              </motion.a>
+            );
+          })}
+        </div>
+
+      </>
+    );
+  };
+
+
+  const [videoEnded, setVideoEnded] = useState(false);
+
+  return (
+    <div className={`${styles.divmain} min-h-screen`}>
+      <header className={styles.header}>
+        <motion.div
+          initial={{
+            opacity: 0,
+            width: 100,
+            translateX: '-50%',
+            translateY: '-50%',
+            top: '50%',
+            left: '50%',
+            position: 'fixed',
+          }}
+          animate={{
+            opacity: 1,
+            width: isCentered ? '240px' : '160px',
+            top: isCentered ? '50%' : '25px',
+            translateX: '-50%',
+            translateY: isCentered ? '-50%' : '0%',
+            transition: { ease: [0.76, 0, 0.24, 1], duration: 0.6 },
+          }}
+          className={` ${isAnimationComplete ? styles.completed : ''}`}
+          style={{ position: 'relative'}}
+         
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+          {/* Video que se muestra por defecto */}
+          <motion.video
+            initial={{ opacity: 1 }} // Opacidad inicial del video
+            animate={{ opacity: videoEnded ? 0 : 1}} // Se oculta al hacer hover o si el video ha terminado
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
+            src="/logointro_2.mp4"
+            muted
+            loop={false}
+            autoPlay={true}
+            onEnded={() => setVideoEnded(true)} // Cambia el estado cuando el video termina
+            style={{ width: '100%', position: 'absolute', top: 0, left: 0 }}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+
+          {/* Imagen que se muestra después de que el video termina */}
+          <motion.img
+            initial={{ opacity: 0 }} // Opacidad inicial de la imagen
+            animate={{ opacity: videoEnded ? 1 : 0 }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
+            src="/logo.svg"
+            alt="Logo Monkey Label"
+            draggable={false}
+            width={180}
+            height={38}
+            style={{ width: 'auto', height: 'auto', willChange: 'transform, width', imageRendering: 'crisp-edges', position: 'absolute', top: 0, left: 0 }}
           />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </motion.div>
+      </header>
+
+
+      {showMainSlider && <motion.main
+        initial={{
+          opacity: 0,
+          translateY: 80,
+          scale: 0.9
+        }}
+        animate={{
+          opacity: siguiente ? 0 : 1,
+          translateY: 0,
+          scale: 1,
+          transition: { ease: [0.76, 0, 0.24, 1], delay: 1, duration: 1 },
+        }}
+        className="">
+        <MainSlider />
+      </motion.main>
+      }
+
+      <motion.footer
+        className={`${styles.footer} row-start-3 flex gap-6 flex-wrap items-center `}>
+        <div className={styles.containerMenuMain}>
+          <MenuLink />
+        </div>
+        <div className={styles.containerRedes}>
+          <FooterCTAs />
+        </div>
+      </motion.footer>
     </div>
   );
 }
+
+

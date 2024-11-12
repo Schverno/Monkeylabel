@@ -1,0 +1,68 @@
+.containerWork {
+    position: relative;
+
+    .containerWorkDiv {
+        position: absolute;
+        width: 100%;
+        height: auto;
+
+        .containerVideos {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 40px 20px;
+
+            &:after {
+                content: "";
+                grid-column: 1 / -1;
+                height: 200px;
+            }
+
+            .containerVideosIN {
+                width: 100%;
+                .video {
+                    display: inline-flex;
+                    aspect-ratio: 16 / 9;
+                    width: 100%;
+                    will-change: transform;
+                    div{
+                        will-change: transform;
+                    }
+
+                }
+
+                .videoText {
+                    width: 100%;
+                    text-align: center;
+                    p{
+                        font-weight: 600;
+                        margin-top: 5px;
+                    }
+                }
+            }
+
+            @media (max-width: 1024px) {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            @media (max-width: 768px) {
+                gap: 20px;
+                grid-template-columns: 1fr 1fr;
+
+            }
+
+            @media (max-width: 460px) {
+                grid-template-columns: 1fr;
+
+                &:after {
+                    height: 150px;
+                }
+
+            }
+
+            @media (max-width: 375px) {}
+
+            @media (max-width: 320px) {}
+        }
+    }
+}

@@ -1,0 +1,96 @@
+.containerContacto{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    height: 100%;
+    min-height: calc(100vh - 100px - 160px);
+
+    .Card{
+        width: 100%;
+        max-width: 280px;
+        .ciudad{
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .email{
+            padding: 20px 0;
+
+            a{
+                font-family: var(--font-archivo);
+                font-weight: 300;
+                transition: all 0.3s ease-out;
+                letter-spacing: 0px;
+                will-change: font-weight, letter-spacing;
+                &:hover{
+                    font-weight: 500;
+                    letter-spacing: 0.2px;
+
+                }
+            }
+           
+        }
+        .persona{
+            p{
+                font-weight: 500;
+                &:last-of-type{
+                    font-style: italic;
+                }
+            }
+            a{
+                font-family: var(--font-archivo);
+                font-weight: 300;
+                transition: all 0.3s ease-out;
+                letter-spacing: 0px;
+                will-change: font-weight, letter-spacing;
+                &:hover{
+                    font-weight: 500;
+                    letter-spacing: 0.2px;
+
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1440px) {
+      
+    }
+
+    @media (max-width: 1024px) {
+        
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        padding-bottom: 100px;
+        .Card{
+            .email{
+                padding: 5px 0 10px 0;
+    
+                a{
+                    font-family: var(--font-archivo);
+                    font-weight: 300;
+                    transition: all 0.3s ease-out;
+                    letter-spacing: 0px;
+                    will-change: font-weight, letter-spacing;
+                    &:hover{
+                        font-weight: 500;
+                        letter-spacing: 0.2px;
+    
+                    }
+                }
+               
+            }
+        }
+
+    }
+
+    @media (max-width: 425px) {
+        .Card{
+            width: 100%;
+            max-width: 300px;
+           
+        }
+    }
+}
