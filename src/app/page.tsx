@@ -171,8 +171,20 @@ export default function Home() {
           }}
           animate={{
             opacity: 1,
-            width: isCentered ? '240px' : '160px',
-            top: isCentered ? '50%' : '25px',
+            width: window.matchMedia("(max-width: 728px)").matches
+            ? isCentered
+                ? '240px'
+                : '130px'
+            : isCentered
+            ? '240px'
+            : '160px',
+            top: window.matchMedia("(max-width: 728px)").matches
+            ? isCentered
+                ? '50%'
+                : '15px'
+            : isCentered
+            ? '50%'
+            : '25px',
             translateX: '-50%',
             translateY: isCentered ? '-50%' : '0%',
             transition: { ease: [0.76, 0, 0.24, 1], duration: 0.6 },

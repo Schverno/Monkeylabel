@@ -92,7 +92,7 @@ const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos
         });
     };
 
-  
+
 
     // Videos actual, siguiente y anterior basado en currentIndex
     const currentVideo = videos[currentIndex];
@@ -134,7 +134,12 @@ const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos
             onHoverEnd={() => {
                 setShowOverlay(false);
             }}
-            whileHover={{ scale: 1.05 }}
+            onTouchStart={() => setShowOverlay(true)}
+            onTouchEnd={() => {
+                setTimeout(() => {
+                    setShowOverlay(false);
+                }, 2000);
+            }} whileHover={{ scale: 1.05 }}
             transition={{ ease: [0.76, 0, 0.24, 1], type: "spring", stiffness: 200, damping: 20 }}
             className='relative overflow-hidden h-[var(--hmaincards)]  w-[var(--wmaincards)] bg-slate-400 rounded-xl cursor-pointer'>
             <video
@@ -200,8 +205,8 @@ const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos
                         nextVideo={nextVideo}
                         isPlaying={isPlaying}
                         handlePlayPause={() => setIsPlaying(!isPlaying)}
-                        onNext={handleNext} 
-                        onPrevious={handlePrevious} 
+                        onNext={handleNext}
+                        onPrevious={handlePrevious}
                     >
                     </ModalVideo>
 

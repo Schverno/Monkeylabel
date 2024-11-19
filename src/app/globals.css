@@ -24,14 +24,39 @@
   }
 }
 
+@media (max-width: 1440px) {
+  :root {
+    --hmaincards: 450px;         /* Altura base */
+    --additional-height: 60px;   /* Altura adicional */
+    --wmaincards: 350px;         /* Ancho base */  
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --hmaincards: 250px;         /* Altura base */
+    --additional-height: 60px;   /* Altura adicional */
+    --wmaincards: 350px;         /* Ancho base */  
+  }
+}
+
 @media (max-width: 768px) {
   :root {
     --background: #ffffff;
     --foreground: #171717;
     --hmaincards: 60vh;         /* Altura base */
     --additional-height: 80px;   /* Altura adicional */
-    --wmaincards: 350px;         /* Ancho base */
-  
+    --wmaincards: 350px;         /* Ancho base */  
+  }
+}
+
+@media (max-width: 425px) {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --hmaincards: 60vh;         /* Altura base */
+    --additional-height: 60px;   /* Altura adicional */
+    --wmaincards: 350px;         /* Ancho base */  
   }
 }
 

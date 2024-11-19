@@ -318,9 +318,7 @@ export default function MainSlider() {
                 drag="x"
                 dragConstraints={{ left: -width / 2, right: 0 }}
                 dragTransition={{ power: 0.2, bounceStiffness: 300, bounceDamping: 20 }}
-                onClick={(e) => {
-                        e.preventDefault();                    
-                }}
+                
                 onDragStart={() => {
                     setMustFinish(true);
                 }}
