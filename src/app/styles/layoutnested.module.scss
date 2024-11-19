@@ -8,6 +8,11 @@
     img {
         width: 100%;
         max-width: 100px;
+        pointer-events: none;
+    }
+
+    video{
+        pointer-events: none;
     }
 
     .navList {

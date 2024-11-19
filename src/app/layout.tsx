@@ -11,7 +11,7 @@ const raleway = Raleway({ subsets: ["latin"], weight: ["300", "500", "600", "700
 
 export const metadata: Metadata = {
   title: "Monkey Label",
-  description: "Description",
+  description: "Films",
 };
 
 export default function RootLayout({

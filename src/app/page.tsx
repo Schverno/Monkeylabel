@@ -201,7 +201,7 @@ export default function Home() {
             animate={{ opacity: videoEnded ? 0 : 1}} // Se oculta al hacer hover o si el video ha terminado
             transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
             src="/logointro_2.mp4"
-            muted
+            muted={true}
             loop={false}
             autoPlay={true}
             onEnded={() => setVideoEnded(true)} // Cambia el estado cuando el video termina

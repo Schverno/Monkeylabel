@@ -11,6 +11,8 @@ export default function Contact() {
 
     <PageWrapper>
       <div className={styles.containerContacto}>
+      <div className={styles.onlydesk}></div>
+
         <div className={styles.Card}>
           <div className={styles.ciudad}>New York</div>
           <div className={styles.email}><a href='mailto:newyork@monkeylabelpictures.com'>newyork@monkeylabelpictures.com</a></div>
@@ -20,6 +22,7 @@ export default function Contact() {
             <a href="mailto:alexis@monkeylabelpictures.com">alexis@monkeylabelpictures.com</a>
             </div>
         </div>
+        <div className={styles.onlydesk}></div>
 
         <div className={styles.Card}>
           <div className={styles.ciudad}>Miami</div>
@@ -30,6 +33,8 @@ export default function Contact() {
             <a href="mailto:chirola@monkeylabelpictures.com">chirola@monkeylabelpictures.com</a>
             </div>
         </div>
+
+        <div className={styles.onlydesk}></div>
 
         <div className={styles.Card}>
           <div className={styles.ciudad}>Buenos Aires</div>
