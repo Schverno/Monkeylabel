@@ -153,6 +153,8 @@ export default function Home() {
     );
   };
 
+  const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 728px)").matches;
+
 
   const [videoEnded, setVideoEnded] = useState(false);
 
@@ -171,14 +173,14 @@ export default function Home() {
           }}
           animate={{
             opacity: 1,
-            width: window.matchMedia("(max-width: 728px)").matches
+            width: isMobile
             ? isCentered
                 ? '240px'
                 : '130px'
             : isCentered
             ? '240px'
             : '160px',
-            top: window.matchMedia("(max-width: 728px)").matches
+            top: isMobile
             ? isCentered
                 ? '50%'
                 : '15px'
