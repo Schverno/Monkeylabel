@@ -203,6 +203,8 @@ export default function Home() {
             src="/logointro_2.mp4"
             muted={true}
             loop={false}
+            playsInline
+            poster="/logo.svg"
             autoPlay={true}
             onEnded={() => setVideoEnded(true)} // Cambia el estado cuando el video termina
             style={{ width: '100%', position: 'absolute', top: 0, left: 0 }}
