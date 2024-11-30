@@ -150,14 +150,23 @@ const ModalVideo = ({
     useEffect(() => {
         resetOverlayVisibility();
     }, [isPlaying, resetOverlayVisibility]);
-
+    
     useEffect(() => {
         const handleMouseMove = () => {
             if (isPlaying) resetOverlayVisibility();
         };
-
+    
+        const handleTouchStart = () => {
+            if (isPlaying) resetOverlayVisibility();
+        };
+    
         window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
+        window.addEventListener('touchstart', handleTouchStart);
+    
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('touchstart', handleTouchStart);
+        };
     }, [isPlaying, resetOverlayVisibility]);
 
     // Show credits overlay
