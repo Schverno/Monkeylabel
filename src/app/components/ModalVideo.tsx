@@ -11,7 +11,6 @@ import { IoClose, IoPlayOutline, IoPause, IoPlaySkipForward, IoPlaySkipBack, IoV
 
 interface ModalVideoProps {
     isOpen: boolean;
-    isPlaying: boolean;
     handleClose: () => void;
     currentVideo: {
         src: string;
@@ -57,7 +56,6 @@ interface ModalVideoProps {
     };
     onNext: () => void;
     onPrevious: () => void;
-    handlePlayPause: () => void;
 }
 
 
@@ -68,14 +66,14 @@ const dropIn = {
     visible: {
         y: "0",
         transition: {
-            duration: 1,
+            duration: 0.66,
             ease: [0.76, 0, 0.24, 1]
         },
     },
     exit: {
-        y: "105vh",
+        y: "100vh",
         transition: {
-            duration: 1,
+            duration: 0.66,
             ease: [0.76, 0, 0.24, 1]
         },
     },
@@ -85,14 +83,12 @@ const dropIn = {
 
 const ModalVideo = ({
     isOpen,
-    isPlaying,
     handleClose,
     currentVideo,
     previousVideo,
     nextVideo,
     onNext,
     onPrevious,
-    handlePlayPause,
 }: ModalVideoProps) => {
 
     const [isOverlayVisible, setIsOverlayVisible] = useState(true);
@@ -104,6 +100,12 @@ const ModalVideo = ({
 
     const overlayTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const playerRef = useRef<ReactPlayer>(null);
+
+    const [isPlaying, setIsPlaying] = useState(true);
+
+    const handlePlayPause = () => {
+        setIsPlaying(!isPlaying);
+    };
 
     // Close with Escape key (always executed)
     useEffect(() => {
@@ -219,6 +221,9 @@ const ModalVideo = ({
     return (
         <ReactPortal wrapperId='react-portal-modal-container'>
             <>
+             <div className={styles.antibug}>
+                
+             </div>
                 <motion.div
                     variants={dropIn}
                     initial="hidden"
@@ -229,21 +234,32 @@ const ModalVideo = ({
                     <div className={styles.contenedorVideo}>
                         <ReactPlayer
                             ref={playerRef}
+                            key={currentVideo.linkVideoLargo} // Genera un key único
                             className={styles.reactplayer}
                             playing={isPlaying}
                             pip={false}
                             loop={true}
                             volume={1}
-                            playIcon={<IoPlayOutline />} // Ícono personalizado cuando está en pausa
-                            pauseIcon={<IoPause />}
                             muted={isMuted}
                             url={currentVideo.linkVideoLargo}
                             onStart={handleReady}
                             onReady={handleReady}
                             width='100%'
                             height='100%'
+                            playsinline={true}
                         />
                     </div>
+                    <motion.button
+                         onClick={() => {
+                            handleClose();
+                            setIsPlaying(false);
+                          }}
+                        whileHover={{ rotate: 180 }}
+                        whileTap={{ scale: 0.8, y: 2 }}
+                        className={styles.closebtn}>
+                        <IoClose />
+                    </motion.button>
+
                     <motion.div
 
                         initial={{ opacity: 1 }}
@@ -251,13 +267,7 @@ const ModalVideo = ({
                         transition={{ duration: 0.5 }}
                         className={styles.contenedorOverlay}
                     >
-                        <motion.button
-                            onClick={handleClose}
-                            whileHover={{ rotate: 180 }}
-                            whileTap={{ scale: 0.8, y: 2 }}
-                            className={styles.closebtn}>
-                            <IoClose />
-                        </motion.button>
+
 
                         {/* Botón de Play/Pausa */}
                         <div className={styles.buttonContainer}>
@@ -379,14 +389,15 @@ const ModalVideo = ({
 
 
                         <div onClick={onPrevious} className={styles.BtnPrev}>
-                            <div className={styles.icon}>
-                                <IoPlaySkipBack />
-                            </div>
+
                             <div className={styles.Text}>
                                 <p>{previousVideo.Label}</p>
                                 <p>{previousVideo.Titulo}</p>
                             </div>
-                            <ReactPlayer
+                            <div className={styles.icon}>
+                                <IoPlaySkipBack />
+                            </div>
+                            {/*<ReactPlayer
                                 className={styles.reactplayerNext}
                                 pip={false}
                                 loop={true}
@@ -402,18 +413,19 @@ const ModalVideo = ({
                                 }}
                                 width='160px'
                                 height='90px'
-                            />
+                            />*/}
                         </div>
 
                         <div onClick={onNext} className={styles.BtnNext}>
-                            <div className={styles.icon}>
-                                <IoPlaySkipForward />
-                            </div>
+
                             <div className={styles.Text}>
                                 <p>{nextVideo.Label}</p>
                                 <p>{nextVideo.Titulo}</p>
                             </div>
-                            <ReactPlayer
+                            <div className={styles.icon}>
+                                <IoPlaySkipForward />
+                            </div>
+                            {/*<ReactPlayer
                                 className={styles.reactplayerNext}
                                 pip={false}
                                 loop={true}
@@ -429,13 +441,14 @@ const ModalVideo = ({
                                 }}
                                 width='160px'
                                 height='90px'
-                            />
+                            />*/}
                         </div>
 
 
                     </motion.div>
 
                     {isCreditsVisible && (
+
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -443,6 +456,7 @@ const ModalVideo = ({
                             transition={{ duration: 0.5 }}
                             className={styles.overlayCredits}
                         >
+
                             <button className={styles.buttonCredits} onClick={handleCloseCredits}>
                                 {isCreditsVisible ? 'CLOSE' : 'CREDITS'}
                             </button>

@@ -19,12 +19,12 @@ export default function Home() {
     const timer = setTimeout(() => {
       setIsCentered(false);
       setSiguiente(false);
-    }, 2000);
+    }, 1500);
 
     const timerdos = setTimeout(() => {
       setIsAnimationComplete(true)
       setShowMainSlider(true);
-    }, 2600);
+    }, 2500);
 
     return () => {
       clearTimeout(timer);
@@ -79,7 +79,7 @@ export default function Home() {
                 animate={{
                   opacity: 1,
                   transition: {
-                    delay: 3 + idx * 0.225,
+                    delay: 2 + idx * 0.225,
                     duration: 0.8,
                     ease: [0.76, 0, 0.24, 1]
                   },
@@ -137,7 +137,7 @@ export default function Home() {
                   opacity: 1,
                   y: 0,
                   transition: {
-                    delay: 5 + idx * 0.225,
+                    delay: 3 + idx * 0.225,
                     duration: 0.5,
                     ease: [0.76, 0, 0.24, 1]
                   },
@@ -156,7 +156,7 @@ export default function Home() {
   const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 728px)").matches;
 
 
-  const [videoEnded, setVideoEnded] = useState(false);
+  //const [videoEnded, setVideoEnded] = useState(false);
 
   return (
     <div className={`${styles.divmain} min-h-screen`}>
@@ -189,13 +189,13 @@ export default function Home() {
             : '25px',
             translateX: '-50%',
             translateY: isCentered ? '-50%' : '0%',
-            transition: { ease: [0.76, 0, 0.24, 1], duration: 0.6 },
+            transition: { ease: [0.76, 0, 0.24, 1], duration: 1 },
           }}
           className={` ${isAnimationComplete ? styles.completed : ''}`}
           style={{ position: 'relative'}}
          
         >
-          {/* Video que se muestra por defecto */}
+          {/* Video que se muestra por defecto 
           <motion.video
             initial={{ opacity: 1 }} // Opacidad inicial del video
             animate={{ opacity: videoEnded ? 0 : 1}} // Se oculta al hacer hover o si el video ha terminado
@@ -208,12 +208,12 @@ export default function Home() {
             autoPlay={true}
             onEnded={() => setVideoEnded(true)} // Cambia el estado cuando el video termina
             style={{ width: '100%', position: 'absolute', top: 0, left: 0 }}
-          />
+          />*/}
 
           {/* Imagen que se muestra después de que el video termina */}
           <motion.img
             initial={{ opacity: 0 }} // Opacidad inicial de la imagen
-            animate={{ opacity: videoEnded ? 1 : 0 }}
+            animate={{ opacity: 1 }}
             transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
             src="/logo.svg"
             alt="Logo Monkey Label"
@@ -236,7 +236,7 @@ export default function Home() {
           opacity: siguiente ? 0 : 1,
           translateY: 0,
           scale: 1,
-          transition: { ease: [0.76, 0, 0.24, 1], delay: 1, duration: 1 },
+          transition: { ease: [0.76, 0, 0.24, 1], delay: 0.6, duration: 1 },
         }}
         className="">
         <MainSlider />

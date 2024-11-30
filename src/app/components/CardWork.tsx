@@ -38,25 +38,19 @@ const CardWork: React.FC<CardMainProps> = ({ indexCardWork, videos, linkcorto })
 
     const [modalVideoOpen, setModalVideoOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(indexCardWork); // Controla el índice actual en el modal
-    const [isPlaying, setIsPlaying] = useState(true);
 
-    const handlePlayPause = () => {
-        setIsPlaying((prev) => !prev);
-    };
+   
+
     const handleNext = () => {
-        setIsPlaying(false); // Detiene el video actual
         setCurrentIndex((prevIndex) => {
             const nextIndex = (prevIndex + 1) % videos.length;
-            setIsPlaying(true); // Resetea el estado a true al cambiar de video
             return nextIndex;
         });
     };
 
     const handlePrevious = () => {
-        setIsPlaying(false); // Detiene el video actual
         setCurrentIndex((prevIndex) => {
             const prevIndexAdjusted = (prevIndex - 1 + videos.length) % videos.length;
-            setIsPlaying(true); // Resetea el estado a true al cambiar de video
             return prevIndexAdjusted;
         });
     };
@@ -111,8 +105,6 @@ const CardWork: React.FC<CardMainProps> = ({ indexCardWork, videos, linkcorto })
                         currentVideo={currentVideo}
                         previousVideo={previousVideo}
                         nextVideo={nextVideo}
-                        isPlaying={isPlaying}
-                        handlePlayPause={handlePlayPause}
                         onNext={handleNext}
                         onPrevious={handlePrevious}
                     >

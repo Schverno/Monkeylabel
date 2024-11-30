@@ -123,23 +123,9 @@ const UpdatePrompt = () => {
     },
     {
       index: 4,
-      src: "/mainVideos/equino.mp4",
-      poster: "/posters/5.webp",
-      btnText: "Caballos / Monkey Label",
-      Titulo: "Caballos",
-      Label: "Monkey Label",
-      linkVideoLargo: "https://player.vimeo.com/video/1015331358",
-      linkcorto: "/mainVideos/equino.mp4",
-      credits: [
-        { title: "Director", value: "John Doe" },
-        { title: "Productor", value: "Jane Smith" },
-      ],
-    },
-    {
-      index: 5,
       src: "/mainVideos/touching.mp4",
       poster: "/posters/8.webp",
-      btnText: "Rauw Alejandro (TBD)",
+      btnText: "Rauw Alejandro (BACKSTAGE TOUCHING THE SKY)",
       Titulo: "(Backstage Touching the Sky)",
       Label: "Rauw Alejandro",
       linkVideoLargo: "https://player.vimeo.com/video/1015300321",
@@ -155,7 +141,7 @@ const UpdatePrompt = () => {
       ],
     },
     {
-      index: 6,
+      index: 5,
       src: "/mainVideos/ultimoTrenParis.mp4",
       poster: "/posters/0.webp",
       btnText: "Ultimo Tren a Paris",
@@ -164,12 +150,25 @@ const UpdatePrompt = () => {
       linkVideoLargo: "https://vimeo.com/1015696537",
       linkcorto: "https://vimeo.com/1015696537",  // linkcorto igual al linkVideoLargo
       credits: [
-        { title: "Director", value: "John Doe" },
-        { title: "Productor", value: "Jane Smith" },
+        { title: "Client", value: "ESPN+ / ESPN Deportes" },
+        { title: "Production Company", value: "ESPN Originals" },
+        { title: "Executive Producer", value: "Edgardo Mattei" },
+        { title: "Producer", value: "Vilma Obando / Diego Tissot" },
+        { title: "DOP", value: "Juan Irigoyen (Monkey Label) / Gerald Lee" },
+        { title: "Sound", value: "Carlos Marcellan" },
+        { title: "Data Manager", value: "Daniela Benedetti" },
+        { title: "Post Production", value: "Monkey Label Films" },
+        { title: "Editor", value: "Daniela Benedetti" },
+        { title: "Editor", value: "Ariel Lepe" },
+        { title: "Editor", value: "Luciana Sternberg" },
+        { title: "Assistant Editor", value: "Belen Risso Patron" },
+        { title: "Colourist", value: "Juan Celestino" },
+        { title: "Sound Design", value: "Pafundi / Quintana" },
+        { title: "Equipment", value: "HD House" },
       ],
     },
     {
-      index: 7,
+      index: 6,
       src: "/mainVideos/beplaying.mp4",
       poster: "/posters/1.webp",
       btnText: "Beplaying",
@@ -178,12 +177,19 @@ const UpdatePrompt = () => {
       linkVideoLargo: "https://vimeo.com/1015697765",
       linkcorto: "https://vimeo.com/1015697765",  // linkcorto igual al linkVideoLargo
       credits: [
-        { title: "Director", value: "John Doe" },
-        { title: "Productor", value: "Jane Smith" },
+        { title: "Production Company", value: "Bourke" },
+        { title: "Director", value: "Martin Fradkin (Monkey Label)" },
+        { title: "Executive Producer", value: "Rodolfo Lamboglia / Tomas Muñoz" },
+        { title: "Producer", value: "Guli Corradetti" },
+        { title: "DOP", value: "Gerald Lee / Juan Irigoyen" },
+        { title: "Post Production", value: "Bourke" },
+        { title: "Editor", value: "Pablo Caceres Medina" },
+        { title: "Colourist", value: "Juan Celestino" },
+        { title: "Equipment", value: "HD House" },
       ],
     },
     {
-      index: 8,
+      index: 7,
       src: "/mainVideos/inHerShoes.mp4",
       poster: "/posters/2.webp",
       btnText: "In Her Shoes",
@@ -192,12 +198,21 @@ const UpdatePrompt = () => {
       linkVideoLargo: "https://vimeo.com/1015698133",
       linkcorto: "https://vimeo.com/1015698133",  // linkcorto igual al linkVideoLargo
       credits: [
-        { title: "Director", value: "John Doe" },
-        { title: "Productor", value: "Jane Smith" },
+        { title: "Client", value: "ESPN+ / ESPN Deportes" },
+        { title: "Production Company", value: "ESPN Originals / Monkey Label Films" },
+        { title: "Executive Producer", value: "Edgardo Mattei" },
+        { title: "Producer", value: "Daniela Martinez / Natasha Gurfinkel" },
+        { title: "DOP", value: "Juan Irigoyen (Monkey Label)" },
+        { title: "Sound", value: "Carlos Marcellan" },
+        { title: "Post Production", value: "Monkey Label Films" },
+        { title: "Editor", value: "Daniela Benedetti" },
+        { title: "Colourist", value: "Juan Celestino" },
+        { title: "Sound Design", value: "Pafundi / Quintana" },
+        { title: "Equipment", value: "Katpa" },
       ],
     },
     {
-      index: 9,
+      index: 8,
       src: "/mainVideos/testigos.mp4",
       poster: "/posters/3.webp",
       btnText: "Testigos",
@@ -206,12 +221,21 @@ const UpdatePrompt = () => {
       linkVideoLargo: "https://vimeo.com/1015698601",
       linkcorto: "https://vimeo.com/1015698601",  // linkcorto igual al linkVideoLargo
       credits: [
-        { title: "Director", value: "John Doe" },
-        { title: "Productor", value: "Jane Smith" },
+        { title: "Client", value: "ESPN+ / ESPN Deportes" },
+        { title: "Production Company", value: "ESPN Originals" },
+        { title: "Executive Producer", value: "Edgardo Mattei" },
+        { title: "Producer", value: "Guli Corradetti" },
+        { title: "DOP", value: "Juan Irigoyen (Monkey Label)" },
+        { title: "Sound", value: "Carlos Marcellan" },
+        { title: "Post Production", value: "Monkey Label Films" },
+        { title: "Editor", value: "Ariel Lepe" },
+        { title: "Colourist", value: "Juan Celestino" },
+        { title: "Sound Design", value: "Pafundi / Quintana" },
+        { title: "Equipment", value: "Katpa" },
       ],
     },
     {
-      index: 10,
+      index: 9,
       src: "/mainVideos/ultimoTrenQatar.mp4",
       poster: "/posters/4.webp",
       btnText: "Ultimo tren a Qatar",
@@ -220,12 +244,24 @@ const UpdatePrompt = () => {
       linkVideoLargo: "https://vimeo.com/1015698797",
       linkcorto: "https://vimeo.com/1015698797",  // linkcorto igual al linkVideoLargo
       credits: [
-        { title: "Director", value: "John Doe" },
-        { title: "Productor", value: "Jane Smith" },
+        { title: "Client", value: "ESPN+ / ESPN Deportes" },
+        { title: "Production Company", value: "ESPN Originals" },
+        { title: "Executive Producer", value: "Edgardo Mattei" },
+        { title: "Producer", value: "Vilma Obando / Guli Corradetti" },
+        { title: "DOP", value: "Juan Irigoyen (Monkey Label) / Gerald Lee" },
+        { title: "Sound", value: "Carlos Marcellan" },
+        { title: "Data Manager", value: "Mauricio Alonso" },
+        { title: "Post Production", value: "Monkey Label Films" },
+        { title: "Editor", value: "Daniela Benedetti" },
+        { title: "Editor", value: "Ariel Lepe" },
+        { title: "Assistant Editor", value: "Belen Risso Patron" },
+        { title: "Colourist", value: "Juan Celestino" },
+        { title: "Sound Design", value: "Pafundi / Quintana" },
+        { title: "Equipment", value: "HD House" },
       ],
     },
     {
-      index: 11,
+      index: 10,
       src: "/mainVideos/ultimoTrenTokio.mp4",
       poster: "/posters/5.webp",
       btnText: "Ultimo tren a Tokio",
@@ -234,12 +270,22 @@ const UpdatePrompt = () => {
       linkVideoLargo: "https://vimeo.com/1015699753",
       linkcorto: "https://vimeo.com/1015699753",  // linkcorto igual al linkVideoLargo
       credits: [
-        { title: "Director", value: "John Doe" },
-        { title: "Productor", value: "Jane Smith" },
+        { title: "Client", value: "ESPN+ / ESPN Deportes" },
+        { title: "Production Company", value: "ESPN Originals" },
+        { title: "Executive Producer", value: "Edgardo Mattei" },
+        { title: "Producer", value: "Vilma Obando / Guli Corradetti" },
+        { title: "DOP", value: "Juan Irigoyen (Monkey Label) / Gerald Lee" },
+        { title: "Sound", value: "Carlos Marcellan" },
+        { title: "Data Manager", value: "Pablo Caceres" },
+        { title: "Post Production", value: "Bourke" },
+        { title: "Editor", value: "Pablo Caceres" },
+        { title: "Colourist", value: "Juan Celestino" },
+        { title: "Sound Design", value: "Pafundi / Quintana" },
+        { title: "Equipment", value: "HD House" },
       ],
     },
     {
-      index: 12,
+      index: 11,
       src: "/mainVideos/espnBucketList.mp4",
       poster: "/posters/6.webp",
       btnText: "The ESPN Bucket List",
@@ -248,8 +294,18 @@ const UpdatePrompt = () => {
       linkVideoLargo: "https://vimeo.com/1015702725",
       linkcorto: "https://vimeo.com/1015702725",  // linkcorto igual al linkVideoLargo
       credits: [
-        { title: "Director", value: "John Doe" },
-        { title: "Productor", value: "Jane Smith" },
+        { title: "Client", value: "ESPN+ / ESPN Deportes" },
+        { title: "Production Company", value: "ESPN Originals / Bourke" },
+        { title: "Executive Producer", value: "Edgardo Mattei / Rodolfo Lamboglia" },
+        { title: "Producer", value: "Guli Corradetti" },
+        { title: "DOP", value: "Juan Irigoyen (Monkey Label) / Gerald Lee" },
+        { title: "Sound", value: "Carlos Marcellan" },
+        { title: "Data Manager", value: "Pablo Caceres" },
+        { title: "Post Production", value: "Bourke" },
+        { title: "Editor", value: "Pablo Caceres" },
+        { title: "Colourist", value: "Juan Celestino" },
+        { title: "Sound Design", value: "Pafundi / Quintana" },
+        { title: "Equipment", value: "HD House" },
       ],
     },
   ];
@@ -265,8 +321,18 @@ const UpdatePrompt = () => {
       linkVideoLargo: "https://player.vimeo.com/video/1015331358",
       linkcorto: "/mainVideos/equino.mp4",
       credits: [
-        { title: "Director", value: "John Doe" },
-        { title: "Productor", value: "Jane Smith" },
+        { title: "Client", value: "Lamar" },
+        { title: "Production Company", value: "Monkey Label Films" },
+        { title: "Director", value: "Juan Irigoyen" },
+        { title: "Executive Producer", value: "Daniela Martinez" },
+        { title: "Producer", value: "Daniela Martinez" },
+        { title: "DOP", value: "Nicolas Gorla" },
+        { title: "Sound", value: "Carlos Marcellan" },
+        { title: "Post Production", value: "Monkey Label Films" },
+        { title: "Editor", value: "Daniela Benedetti" },
+        { title: "Colourist", value: "Juan Celestino" },
+        { title: "Sound Design", value: "Pafundi / Quintana" },
+        { title: "Equipment", value: "Katpa" },
       ],
     },
     {
@@ -435,8 +501,20 @@ const UpdatePrompt = () => {
       linkVideoLargo: "https://vimeo.com/1015705604",
       linkcorto: "https://vimeo.com/1015705604",
       credits: [
-        { title: "Director", value: "" },
-        { title: "Productor", value: "" },
+        { title: "Agency", value: "Distrito Arte" },
+        { title: "Talent", value: "Damian Betular" },
+        { title: "Client", value: "Faber Castell" },
+        { title: "Production Company", value: "Monkey Label Films" },
+        { title: "Director", value: "Juan Irigoyen" },
+        { title: "Executive Producer", value: "Daniela Martinez" },
+        { title: "Producer", value: "Carlos Marcellan" },
+        { title: "DOP", value: "Nicolas Gorla" },
+        { title: "Gaffer", value: "Juan Mendoza" },
+        { title: "Art Director", value: "Valentina Llorens" },
+        { title: "Post Production", value: "Monkey Label Films" },
+        { title: "Editor", value: "Daniela Benedetti" },
+        { title: "Colourist", value: "Juan Celestino" },
+        { title: "VFX", value: "Nicolas Agarzua" },
       ],
     },
   ];
@@ -444,6 +522,7 @@ const UpdatePrompt = () => {
   const videosMUSIC = [
     {
       index: 0,
+      idxMUSIC: 0,
       src: "/mainVideos/china.mp4",
       poster: "/posters/7.webp",
       btnText: "Ay Ay Ay China Suárez / Bourke",
@@ -467,9 +546,10 @@ const UpdatePrompt = () => {
     },
     {
       index: 1,
+      idxMUSIC: 1,
       src: "/mainVideos/touching.mp4",
       poster: "/posters/8.webp",
-      btnText: "Rauw Alejandro (TBD)",
+      btnText: "Rauw Alejandro (BACKSTAGE TOUCHING THE SKY)",
       Titulo: "(Backstage Touching the Sky)",
       Label: "Rauw Alejandro",
       linkVideoLargo: "https://player.vimeo.com/video/1015300321",
@@ -489,28 +569,7 @@ const UpdatePrompt = () => {
 
   //DOCUMENTARY HEIGHT
   const containerWorkDivRef = useRef<HTMLDivElement | null>(null);
-  const [containerHeight, setContainerHeight] = useState('auto');
-
-  useEffect(() => {
-    const updateHeight = () => {
-      if (containerWorkDivRef.current) {
-        setContainerHeight(containerWorkDivRef.current.offsetHeight + 'px');
-      }
-    };
-
-    // Crear un ResizeObserver para monitorear los cambios de tamaño
-    const resizeObserver = new ResizeObserver(() => updateHeight());
-    if (containerWorkDivRef.current) {
-      resizeObserver.observe(containerWorkDivRef.current);
-    }
-
-    // Limpiar el observador al desmontar el componente
-    return () => {
-      if (containerWorkDivRef.current) {
-        resizeObserver.unobserve(containerWorkDivRef.current);
-      }
-    };
-  }, []);
+  const containerWorkRef = useRef<HTMLDivElement | null>(null);
 
   const [selectedCategory, setSelectedCategory] = useState<Category>('DOCUMENTARY');
   const searchParams = useSearchParams();
@@ -530,7 +589,7 @@ const UpdatePrompt = () => {
     <PageWrapper>
       <Suspense >
         <div className={styles.containerWork}
-          style={{ minHeight: containerHeight }}
+          ref={containerWorkRef}
         >
 
           <div
@@ -542,8 +601,14 @@ const UpdatePrompt = () => {
                 <motion.div
                   initial={{ opacity: 0, translateY: 50 }}
                   animate={{ opacity: 1, translateY: 0 }}
-                  exit={{ opacity: 0, translateY: -25 }}
                   transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
+                  exit={{
+                    opacity: 0, translateY: 0,
+                    transition: {
+                      ease: [0.76, 0, 0.24, 1],
+                      duration: 0.5, // Duración más corta para el `exit`
+                    },
+                  }}
                   className={styles.containerVideos}
                 >
                   {[...videosDOCUMENTARY].map((video, idxWork) => (
@@ -565,7 +630,7 @@ const UpdatePrompt = () => {
                             stiffness: 200,
                             damping: 20,
                             duration: 1,
-                            delay: idxWork * 0.33
+                            delay: idxWork * 0.22
                           }
                         },
                       }}
@@ -599,65 +664,65 @@ const UpdatePrompt = () => {
           <div className={styles.containerWorkDiv}>
             <AnimatePresence mode='wait'>
               {selectedCategory === 'COMMERCIALS' &&
+
                 <motion.div
                   initial={{ opacity: 0, translateY: 50 }}
                   animate={{ opacity: 1, translateY: 0 }}
-                  exit={{ opacity: 0, translateY: -25 }}
                   transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
+                  exit={{
+                    opacity: 0, translateY: 0,
+                    transition: {
+                      ease: [0.76, 0, 0.24, 1],
+                      duration: 0.5, // Duración más corta para el `exit`
+                    },
+                  }}
+                  className={styles.containerVideos}
                 >
-                  <motion.div
-                    initial={{ opacity: 0, translateY: 50 }}
-                    animate={{ opacity: 1, translateY: 0 }}
-                    exit={{ opacity: 0, translateY: -25 }}
-                    transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
-                    className={styles.containerVideos}
-                  >
-                    {[...videosCOMMERCIALS].map((video, idxCOM) => (
-                      <motion.div
-                        key={idxCOM}
-                        variants={{
-                          hidden: {
-                            opacity: 0,
-                            scaleY: 0.7,
-                            scaleX: 0.8,
-                          },
-                          translatePhase: {
-                            opacity: 1,
-                            scaleX: 1,
-                            scaleY: 1,
-                            transition: {
-                              ease: [0.76, 0, 0.24, 1],
-                              type: "spring",
-                              stiffness: 200,
-                              damping: 20,
-                              duration: 1,
-                              delay: idxCOM * 0.33
-                            }
-                          },
-                        }}
-                        initial="hidden"
-                        animate="translatePhase"
-                        exit={{
+                  {[...videosCOMMERCIALS].map((video, idxCOM) => (
+                    <motion.div
+                      key={idxCOM}
+                      variants={{
+                        hidden: {
                           opacity: 0,
-                          scaleX: 0.9,
-                          scaleY: 0.9,
-                          translateY: -5,
+                          scaleY: 0.7,
+                          scaleX: 0.8,
+                        },
+                        translatePhase: {
+                          opacity: 1,
+                          scaleX: 1,
+                          scaleY: 1,
                           transition: {
                             ease: [0.76, 0, 0.24, 1],
-                            duration: 0.5,
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 20,
+                            duration: 1,
+                            delay: idxCOM * 0.22
                           }
-                        }}
-                        className={styles.containerVideosIN}
-                      >
-                        <div className={styles.video}>
-                          <CardWork src={video.src} linkcorto={video.linkcorto} linkLargo={video.linkVideoLargo} btnText={video.btnText} poster={video.poster} key={idxCOM} indexCardWork={video.index} videos={videosCOMMERCIALS} />
-                        </div>
-                        <div className={styles.videoText}>
-                          <p>{video.btnText} </p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </motion.div>
+                        },
+                      }}
+                      initial="hidden"
+                      animate="translatePhase"
+                      exit={{
+                        opacity: 0,
+                        scaleX: 0.9,
+                        scaleY: 0.9,
+                        translateY: -5,
+                        transition: {
+                          ease: [0.76, 0, 0.24, 1],
+                          duration: 0.5,
+                        }
+                      }}
+                      className={styles.containerVideosIN}
+                    >
+                      <div className={styles.video}>
+                        <CardWork src={video.src} linkcorto={video.linkcorto} linkLargo={video.linkVideoLargo} btnText={video.btnText} poster={video.poster} key={idxCOM} indexCardWork={video.index} videos={videosCOMMERCIALS} />
+                      </div>
+                      <div className={styles.videoText}>
+                        <p>{video.btnText} </p>
+                      </div>
+                    </motion.div>
+                  ))}
                 </motion.div>
               }
             </AnimatePresence>
@@ -666,65 +731,65 @@ const UpdatePrompt = () => {
           <div className={styles.containerWorkDiv}>
             <AnimatePresence mode='wait'>
               {selectedCategory === 'MUSIC' &&
+
                 <motion.div
                   initial={{ opacity: 0, translateY: 50 }}
                   animate={{ opacity: 1, translateY: 0 }}
-                  exit={{ opacity: 0, translateY: -25 }}
                   transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
+                  exit={{
+                    opacity: 0, translateY: 0,
+                    transition: {
+                      ease: [0.76, 0, 0.24, 1],
+                      duration: 0.5, // Duración más corta para el `exit`
+                    },
+                  }}
+                  className={styles.containerVideos}
                 >
-                  <motion.div
-                    initial={{ opacity: 0, translateY: 50 }}
-                    animate={{ opacity: 1, translateY: 0 }}
-                    exit={{ opacity: 0, translateY: -25 }}
-                    transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
-                    className={styles.containerVideos}
-                  >
-                    {[...videosMUSIC].map((video, idxMUSIC) => (
-                      <motion.div
-                        key={idxMUSIC}
-                        variants={{
-                          hidden: {
-                            opacity: 0,
-                            scaleY: 0.7,
-                            scaleX: 0.8,
-                          },
-                          translatePhase: {
-                            opacity: 1,
-                            scaleX: 1,
-                            scaleY: 1,
-                            transition: {
-                              ease: [0.76, 0, 0.24, 1],
-                              type: "spring",
-                              stiffness: 200,
-                              damping: 20,
-                              duration: 1,
-                              delay: idxMUSIC * 0.33
-                            }
-                          },
-                        }}
-                        initial="hidden"
-                        animate="translatePhase"
-                        exit={{
+                  {[...videosMUSIC].map((video, idxMUSIC) => (
+                    <motion.div
+                      key={idxMUSIC}
+                      variants={{
+                        hidden: {
                           opacity: 0,
-                          scaleX: 0.9,
-                          scaleY: 0.9,
-                          translateY: -5,
+                          scaleY: 0.7,
+                          scaleX: 0.8,
+                        },
+                        translatePhase: {
+                          opacity: 1,
+                          scaleX: 1,
+                          scaleY: 1,
                           transition: {
                             ease: [0.76, 0, 0.24, 1],
-                            duration: 0.5,
+                            type: "spring",
+                            stiffness: 200,
+                            damping: 20,
+                            duration: 1,
+                            delay: idxMUSIC * 0.22
                           }
-                        }}
-                        className={styles.containerVideosIN}
-                      >
-                        <div className={styles.video}>
-                          <CardWork src={video.src} linkcorto={video.linkcorto} linkLargo={video.linkVideoLargo} btnText={video.btnText} poster={video.poster} key={idxMUSIC} indexCardWork={video.index} videos={videosMUSIC} />
-                        </div>
-                        <div className={styles.videoText}>
-                          <p>{video.btnText} </p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </motion.div>
+                        },
+                      }}
+                      initial="hidden"
+                      animate="translatePhase"
+                      exit={{
+                        opacity: 0,
+                        scaleX: 0.9,
+                        scaleY: 0.9,
+                        translateY: -5,
+                        transition: {
+                          ease: [0.76, 0, 0.24, 1],
+                          duration: 0.5,
+                        }
+                      }}
+                      className={styles.containerVideosIN}
+                    >
+                      <div className={styles.video}>
+                        <CardWork src={video.src} linkcorto={video.linkcorto} linkLargo={video.linkVideoLargo} btnText={video.btnText} poster={video.poster} key={video.idxMUSIC} indexCardWork={video.index} videos={videosMUSIC} />
+                      </div>
+                      <div className={styles.videoText}>
+                        <p>{video.btnText} </p>
+                      </div>
+                    </motion.div>
+                  ))}
                 </motion.div>
               }
             </AnimatePresence>
@@ -740,9 +805,9 @@ const UpdatePrompt = () => {
 
 const WorkPage = () => {
   return (
-      <Suspense fallback={null}>
-          <UpdatePrompt />
-      </Suspense>
+    <Suspense fallback={null}>
+      <UpdatePrompt />
+    </Suspense>
   )
 }
 

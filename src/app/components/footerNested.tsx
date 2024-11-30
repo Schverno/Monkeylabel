@@ -47,7 +47,7 @@ export default function FooterNester() {
                                     y: 0,
                                     transition: {
                                         delay: 0.5 + idx * 0.225,
-                                        duration: 1,
+                                        duration: 0.6,
                                         ease: [0.76, 0, 0.24, 1]
                                     },
                                 }}
@@ -85,7 +85,7 @@ export default function FooterNester() {
                 },
             }}
             >
-                <p>2024 MONKEY LABEL.<span className={styles.span}></span> ALL RIGHTS RESERVED</p>
+                <p>2024 MONKEY LABEL FILMS.<span className={styles.span}></span> ALL RIGHTS RESERVED</p>
 
             </motion.div>
         </motion.footer>

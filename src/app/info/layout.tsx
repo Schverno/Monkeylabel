@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter,useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import styles from '../styles/layoutnested.module.scss';
 import { LayoutWrapper } from '@/app/components/layout-wrapper';
@@ -48,7 +48,7 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
           }
         });
       },
-      { threshold: 1 }
+      { threshold: 0.5 }
     );
 
     if (footerRef.current) {
@@ -116,11 +116,19 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
   //PASAR CATEGORIAS WORK
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<Category>('DOCUMENTARY');
+  const searchParams = useSearchParams();
 
   const handleSelect = (category: Category) => {
     setSelectedCategory(category);
     router.push(`/info/work?category=${category}`);
   };
+
+  useEffect(() => {
+    const queryCategory = searchParams.get('category') as Category;
+    if (queryCategory) {
+      setSelectedCategory(queryCategory);
+    }
+  }, [searchParams]);
 
   return (
 
@@ -150,6 +158,7 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
                 transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
                 src="/logo_1.mp4"
                 muted
+                playsInline
                 loop
                 autoPlay={true}
                 style={{ width: '100%', position: 'absolute', top: 0, left: 0 }}
@@ -172,7 +181,7 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
                       key={category}
                       onClick={() => {
                         if (['DOCUMENTARY', 'COMMERCIALS', 'MUSIC'].includes(category)) {
-                          handleSelect(category as Category); // Aseguramos que category es de tipo Category
+                          handleSelect(category as Category); 
                         }
                       }} whileHover={{ y: -30 }}
                       animate={{ opacity: selectedCategory === category ? 1 : 0.5 }}
@@ -303,7 +312,7 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
       <div className='relative'>
         <motion.div
           ref={footerRef}
-          style={{ opacity: 0, height: 1 }}
+          style={{ opacity: 0, height: 100}}
         >
         </motion.div>
         <AnimatePresence>

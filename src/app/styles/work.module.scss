@@ -1,10 +1,11 @@
 .containerWork {
     position: relative;
-
     .containerWorkDiv {
-        position: absolute;
+        position: unset;
         width: 100%;
+        min-height: auto;
         height: auto;
+        top: 0;
 
         .containerVideos {
             width: 100%;

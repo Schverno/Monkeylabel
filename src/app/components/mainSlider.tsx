@@ -66,7 +66,7 @@ export default function MainSlider() {
         {
             index: 2,
             src: "/mainVideos/valeria.mp4",
-            poster: "/posters/1.webp",
+            poster: "/posters/2.webp",
             btnText: "Valeria Mazza / Paramount+",
             Titulo: "Valeria Mazza",
             Label: "Paramount+",
@@ -159,8 +159,18 @@ export default function MainSlider() {
             linkVideoLargo: "https://player.vimeo.com/video/1015331358",
             linkcorto: "/mainVideos/equino.mp4",
             credits: [
-                { title: "Director", value: "John Doe" },
-                { title: "Productor", value: "Jane Smith" },
+                { title: "Client", value: "LAMAR" },
+                { title: "Production Company", value: "MONKEY LABEL FILMS" },
+                { title: "Director", value: "JUAN IRIGOYEN" },
+                { title: "Executive Producer", value: "DANIELA MARTINEZ" },
+                { title: "Producer", value: "DANIELA MARTINEZ" },
+                { title: "DOP", value: "NICOLAS GORLA" },
+                { title: "Sound", value: "CARLOS MARCELLAN" },
+                { title: "Post Production", value: "MONKEY LABEL FILMS" },
+                { title: "Editor", value: "DANIELA BENEDETTI" },
+                { title: "Colourist", value: "JUAN CELESTINO" },
+                { title: "Sound Design", value: "PAFUNDI / QUINTANA" },
+                { title: "Equipment", value: "KATPA" },
             ],
         },
         {
@@ -233,7 +243,7 @@ export default function MainSlider() {
     
     
 
-    const FAST_D = 60;
+    const FAST_D = 30;
     const SLOW_D = 7500;
 
     const [duration, setDuration] = useState(SLOW_D);
@@ -357,7 +367,7 @@ export default function MainSlider() {
                     }
                 }}
             >
-                {[...videosMainPage, ...videosMainPage, ...videosMainPage, ...videosMainPage,].map((video, idx) => (
+                {[...videosMainPage, ...videosMainPage].map((video, idx) => (
                     <motion.div
                         key={idx}
                         variants={{
