@@ -118,8 +118,18 @@ const ModalVideo = ({
 
     //QuitarScroll
     useEffect(() => {
-        document.body.style.overflow = 'hidden';
+        const handleResize = () => {
+            if (window.innerWidth >= 728) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'unset';
+            }
+        };    
+        handleResize();    
+        window.addEventListener('resize', handleResize);
+    
         return (): void => {
+            window.removeEventListener('resize', handleResize);
             document.body.style.overflow = 'unset';
         };
     }, [isOpen]);
