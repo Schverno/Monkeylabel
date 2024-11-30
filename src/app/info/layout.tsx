@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useRef } from 'react';
-import { usePathname, useRouter,useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import styles from '../styles/layoutnested.module.scss';
 import { LayoutWrapper } from '@/app/components/layout-wrapper';
@@ -116,20 +116,13 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
   //PASAR CATEGORIAS WORK
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState<Category>('DOCUMENTARY');
-  const searchParams = useSearchParams();
 
   const handleSelect = (category: Category) => {
     setSelectedCategory(category);
     router.push(`/info/work?category=${category}`);
   };
 
-  useEffect(() => {
-    const queryCategory = searchParams.get('category') as Category;
-    if (queryCategory) {
-      setSelectedCategory(queryCategory);
-    }
-  }, [searchParams]);
-
+ 
   return (
 
     <LayoutWrapper>
