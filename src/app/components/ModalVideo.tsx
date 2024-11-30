@@ -122,7 +122,7 @@ const ModalVideo = ({
             if (window.innerWidth >= 728) {
                 document.body.style.overflow = 'hidden';
             } else {
-                document.body.style.overflow = 'hidden';
+                document.body.style.overflow = 'unset';
             }
         };    
         handleResize();    
