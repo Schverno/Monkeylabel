@@ -168,7 +168,7 @@
 .paddingChildren{
     color: #000;
     padding: 80px 80px;
-    min-height: calc(100vh - 140px);
+    min-height: calc(100dvh - 140px);
     display: flex;
     flex-direction: column;
     div{
