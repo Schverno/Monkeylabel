@@ -135,10 +135,10 @@ export default function About() {
                     exit={{ opacity: 0 }}
                     transition={{ ease: [0.76, 0, 0.24, 1], duration: 1 }}
                   >
-                    <p>Monkey Label Films es una productora creativa formada por socios preocupados por realizar proyectos audivisuales con un significado diferencial, buscando siempre un mensaje creative y un alto nivel de imagen. </p>
-                    <p>Con capacidad de producción internacional, nuestra pasión por este trabajo, nos ha llevado a colaboraciones con las plataformas mas reconocidas de la industria, artistas destacados y marcas de vanguardia. </p>
-                    <p>Un espacio con Directores y Productores premiados internacionalmente, y comprometidos con la inclusion y la diversidad en cada uno de sus contenidos. </p>
-                    <p>Una mirada artística y creativea plasmada en cada uno de nuestros proyectos, ofreciendo de esta forma un diferencial a cada narrativa en la que participamos, una etiqueta con identidad propia.</p>
+                    <p>Monkey Label Films es una productora creativa formada por socios preocupados por realizar proyectos audiovisuales con un significado diferencial, buscando siempre un mensaje creativo y un alto nivel de imagen.</p>
+                    <p>Con capacidad de producción internacional, nuestra pasión por este trabajo, nos ha llevado a colaboraciones con las plataformas más reconocidas de la industria, artistas destacados y marcas de vanguardia.</p>
+                    <p>Un espacio con Directores y Productores premiados internacionalmente, y comprometidos con la inclusión y la diversidad en cada uno de sus contenidos.</p>
+                    <p>Una mirada artística y creativa plasmada en cada uno de nuestros proyectos, ofreciendo de esta forma un diferencial a cada narrativa en la que participamos, una etiqueta con identidad propia.</p>
                   </motion.div>
                 )}
               </AnimatePresence>
