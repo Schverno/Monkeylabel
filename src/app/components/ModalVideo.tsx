@@ -265,7 +265,6 @@ const ModalVideo = ({
                             onReady={handleReady}
                             width='100%'
                             height='100%'
-                            playsinline={true}
                         />
                     </div>
                     <motion.button

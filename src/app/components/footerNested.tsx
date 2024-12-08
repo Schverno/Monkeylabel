@@ -10,18 +10,18 @@ import { FaFacebookF, FaXTwitter, FaInstagram, FaLinkedinIn } from "react-icons/
 export default function FooterNester() {
 
     const SOCIAL_CTAS = [
-        {
-            Component: FaFacebookF,
-            href: "https://www.facebook.com",
-        },
+        //{
+        //    Component: FaFacebookF,
+        //    href: "https://www.facebook.com",
+        //},
         {
             Component: FaInstagram,
             href: "https://www.instagram.com",
         },
-        {
-            Component: FaXTwitter,
-            href: "https://www.x.com",
-        },
+        //{
+        //    Component: FaXTwitter,
+        //    href: "https://www.x.com",
+        //},
         {
             Component: FaLinkedinIn,
             href: "https://www.linkedin.com",

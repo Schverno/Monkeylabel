@@ -125,7 +125,7 @@ const UpdatePrompt = () => {
       index: 4,
       src: "/mainVideos/touching.mp4",
       poster: "/posters/8.webp",
-      btnText: "Rauw Alejandro (BACKSTAGE TOUCHING THE SKY)",
+      btnText: "Rauw Alejandro (Backstage Touching The Sky)",
       Titulo: "(Backstage Touching the Sky)",
       Label: "Rauw Alejandro",
       linkVideoLargo: "https://player.vimeo.com/video/1015300321",
@@ -199,7 +199,7 @@ const UpdatePrompt = () => {
       linkcorto: "https://vimeo.com/1015698133",  // linkcorto igual al linkVideoLargo
       credits: [
         { title: "Client", value: "ESPN+ / ESPN Deportes" },
-        { title: "Production Company", value: "ESPN Originals / Monkey Label Films" },
+        { title: "Production Company", value: "ESPN Originals" },
         { title: "Executive Producer", value: "Edgardo Mattei" },
         { title: "Producer", value: "Daniela Martinez / Natasha Gurfinkel" },
         { title: "DOP", value: "Juan Irigoyen (Monkey Label)" },
@@ -517,6 +517,19 @@ const UpdatePrompt = () => {
         { title: "VFX", value: "Nicolas Agarzua" },
       ],
     },
+    {
+      index: 7,
+      src: "/mainVideos/fabercastell.mp4",
+      poster: "",
+      btnText: "Coppel / Monkey Label",
+      Titulo: "Coppel",
+      Label: "Monkey Label",
+      linkVideoLargo: "https://vimeo.com/1036345626",
+      linkcorto: "https://vimeo.com/1036345626",
+      credits: [
+        { title: "Placeholder", value: "Placeholder" },
+      ],
+    },
   ];
 
   const videosMUSIC = [
@@ -549,7 +562,7 @@ const UpdatePrompt = () => {
       idxMUSIC: 1,
       src: "/mainVideos/touching.mp4",
       poster: "/posters/8.webp",
-      btnText: "Rauw Alejandro (BACKSTAGE TOUCHING THE SKY)",
+      btnText: "Rauw Alejandro (Backstage Touching The Sky)",
       Titulo: "(Backstage Touching the Sky)",
       Label: "Rauw Alejandro",
       linkVideoLargo: "https://player.vimeo.com/video/1015300321",

@@ -101,18 +101,18 @@ export default function Home() {
   };
 
   const SOCIAL_CTAS = [
-    {
-      Component: FaFacebookF,
-      href: "https://www.facebook.com",
-    },
+    //{
+    //  Component: FaFacebookF,
+    //  href: "https://www.facebook.com",
+    //},
     {
       Component: FaInstagram,
       href: "https://www.instagram.com",
     },
-    {
-      Component: FaXTwitter,
-      href: "https://www.x.com",
-    },
+    //{
+    //  Component: FaXTwitter,
+    //  href: "https://www.x.com",
+    //},
     {
       Component: FaLinkedinIn,
       href: "https://www.linkedin.com",
@@ -156,7 +156,7 @@ export default function Home() {
   const isMobile = typeof window !== "undefined" && window.matchMedia("(max-width: 728px)").matches;
 
 
-  //const [videoEnded, setVideoEnded] = useState(false);
+  const [videoEnded, setVideoEnded] = useState(false);
 
   return (
     <div className={`${styles.divmain} min-h-screen`}>
@@ -195,26 +195,25 @@ export default function Home() {
           style={{ position: 'relative'}}
          
         >
-          {/* Video que se muestra por defecto 
+          {/* Video que se muestra por defecto */}
           <motion.video
             initial={{ opacity: 1 }} // Opacidad inicial del video
             animate={{ opacity: videoEnded ? 0 : 1}} // Se oculta al hacer hover o si el video ha terminado
             transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
-            src="/logointro_2.mp4"
+            src="/logointro_4.mp4"
             muted={true}
             loop={false}
             playsInline
-            poster="/logo.svg"
             autoPlay={true}
             onEnded={() => setVideoEnded(true)} // Cambia el estado cuando el video termina
             style={{ width: '100%', position: 'absolute', top: 0, left: 0 }}
-          />*/}
+          />
 
           {/* Imagen que se muestra después de que el video termina */}
           <motion.img
             initial={{ opacity: 0 }} // Opacidad inicial de la imagen
-            animate={{ opacity: 1 }}
-            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0.5 }}
+            animate={{ opacity: videoEnded ? 1 : 0 }}
+            transition={{ ease: [0.76, 0, 0.24, 1], duration: 0 }}
             src="/logo.svg"
             alt="Logo Monkey Label"
             draggable={false}
