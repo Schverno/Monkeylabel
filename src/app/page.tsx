@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import styles from './styles/main.module.scss';
-import { FaFacebookF, FaXTwitter, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
+import {FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 
 import MainSlider from './components/mainSlider'
 
