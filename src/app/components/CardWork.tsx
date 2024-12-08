@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/lazy'
 import ModalVideo from './ModalVideo';
 
 interface CardMainProps {
@@ -73,7 +73,7 @@ const CardWork: React.FC<CardMainProps> = ({ indexCardWork, videos, linkcorto })
         <motion.div
             whileHover={{ scale: 1.1 }}
             transition={{ ease: [0.76, 0, 0.24, 1], type: "spring", stiffness: 200, damping: 20 }}
-            className='relative overflow-hidden h-full  w-[100px] bg-slate-400 rounded-xl cursor-pointer'>
+            className='relative overflow-hidden h-full  w-[100px] bg-black rounded-xl cursor-pointer'>
          
             <ReactPlayer
                 className="absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 opacity-100"
@@ -82,6 +82,7 @@ const CardWork: React.FC<CardMainProps> = ({ indexCardWork, videos, linkcorto })
                 playing={true}
                 url={linkcorto}
                 autoPlay={true}
+                playsinline={true}
                 volume={0}
                 muted={true}
                 width='100%'
