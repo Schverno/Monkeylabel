@@ -258,7 +258,6 @@ const ModalVideo = ({
                             playing={isPlaying}
                             pip={false}
                             loop={true}
-                            playsinline={true}
                             volume={1}
                             muted={isMuted}
                             url={currentVideo.linkVideoLargo}
