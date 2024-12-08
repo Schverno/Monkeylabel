@@ -64,6 +64,9 @@
 
     @media (max-width: 768px) {
         justify-content: center;
+        display: grid;
+        justify-items: center;
+        grid-template-columns: 1fr;
         padding: 0;
         gap:20px;
         flex-grow: 0;
