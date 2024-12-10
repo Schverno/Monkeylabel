@@ -16,7 +16,7 @@ export default function FooterNester() {
         //},
         {
             Component: FaInstagram,
-            href: "https://www.instagram.com",
+            href: "https://www.instagram.com/MonkeyLabelFilms",
         },
         //{
         //    Component: FaXTwitter,

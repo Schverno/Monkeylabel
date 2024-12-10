@@ -107,7 +107,7 @@ export default function Home() {
     //},
     {
       Component: FaInstagram,
-      href: "https://www.instagram.com",
+      href: "https://www.instagram.com/MonkeyLabelFilms",
     },
     //{
     //  Component: FaXTwitter,

@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import ReactPortal from './ReactPortal'
 import styles from '../styles/modalvideo.module.scss'
 import { AnimatePresence, motion } from 'framer-motion'
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/vimeo'
 import { IoClose, IoPlayOutline, IoPause, IoPlaySkipForward, IoPlaySkipBack, IoVolumeMute, IoVolumeHigh } from "react-icons/io5";
 
 
@@ -107,7 +107,7 @@ const ModalVideo = ({
         setIsPlaying(!isPlaying);
     };
 
-    // Close with Escape key (always executed)
+    // Close with Escape key
     useEffect(() => {
         const closeOnEscapeKey = (e: KeyboardEvent) => {
             if (e.key === 'Escape') handleClose();
@@ -116,7 +116,7 @@ const ModalVideo = ({
         return () => document.body.removeEventListener('keydown', closeOnEscapeKey);
     }, [handleClose]);
 
-    //QuitarScroll
+    //NoScroll
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth >= 728) {
@@ -134,7 +134,7 @@ const ModalVideo = ({
         };
     }, [isOpen]);
 
-    // Reset overlay visibility logic
+    // Reset overlay visibility
     const resetOverlayVisibility = useCallback(() => {
         if (!isPlaying) {
             setIsOverlayVisible(true);
@@ -210,7 +210,7 @@ const ModalVideo = ({
         return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
     };
 
-    // Progress bar functionality
+    // Progress bar 
     const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
         if (playerRef.current && duration) {
             const rect = e.currentTarget.getBoundingClientRect();
@@ -253,7 +253,7 @@ const ModalVideo = ({
                     <div className={styles.contenedorVideo}>
                         <ReactPlayer
                             ref={playerRef}
-                            key={currentVideo.linkVideoLargo} // Genera un key único
+                            key={currentVideo.linkVideoLargo}
                             className={styles.reactplayer}
                             playing={isPlaying}
                             pip={false}
@@ -336,7 +336,7 @@ const ModalVideo = ({
                             <motion.div
                                 initial={{ width: '0%' }}
                                 animate={{
-                                    width: duration > 0 ? `${(currentTime / duration) * 100}%` : '0%' // Asegúrate de que duration no sea 0
+                                    width: duration > 0 ? `${(currentTime / duration) * 100}%` : '0%' 
                                 }}
                                 exit={{ width: '0%' }}
                                 transition={{ ease: "linear", duration: 0.2 }}

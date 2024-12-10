@@ -71,7 +71,7 @@ const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos
     };
 
     const [modalVideoOpen, setModalVideoOpen] = useState(false);
-    const [currentIndex, setCurrentIndex] = useState(index); // Controla el índice actual en el modal
+    const [currentIndex, setCurrentIndex] = useState(index); // índice actual 
 
     const handleNext = () => {
         setCurrentIndex((prevIndex) => {

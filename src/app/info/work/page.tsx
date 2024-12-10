@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef, useState, Suspense } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { PageWrapper } from '@/app/components/page-wrapper';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -144,11 +144,11 @@ const UpdatePrompt = () => {
       index: 5,
       src: "/mainVideos/ultimoTrenParis.mp4",
       poster: "/posters/0.webp",
-      btnText: "Último Tren a Paris",
+      btnText: "Último Tren a Paris / ESPN",
       Titulo: "Último Tren a Paris",
-      Label: "Vimeo",
+      Label: "ESPN",
       linkVideoLargo: "https://vimeo.com/1015696537",
-      linkcorto: "https://vimeo.com/1015696537",  // linkcorto igual al linkVideoLargo
+      linkcorto: "https://vimeo.com/1015696537",  
       credits: [
         { title: "Client", value: "ESPN+ / ESPN Deportes" },
         { title: "Production Company", value: "ESPN Originals" },
@@ -171,11 +171,11 @@ const UpdatePrompt = () => {
       index: 6,
       src: "/mainVideos/beplaying.mp4",
       poster: "/posters/1.webp",
-      btnText: "Beplaying",
+      btnText: "Beplaying / Disney+",
       Titulo: "Beplaying",
-      Label: "Vimeo",
+      Label: "Disney+",
       linkVideoLargo: "https://vimeo.com/1015697765",
-      linkcorto: "https://vimeo.com/1015697765",  // linkcorto igual al linkVideoLargo
+      linkcorto: "https://vimeo.com/1015697765",  
       credits: [
         { title: "Production Company", value: "Bourke" },
         { title: "Director", value: "Martin Fradkin (Monkey Label)" },
@@ -192,11 +192,11 @@ const UpdatePrompt = () => {
       index: 7,
       src: "/mainVideos/inHerShoes.mp4",
       poster: "/posters/2.webp",
-      btnText: "In Her Shoes",
+      btnText: "In Her Shoes / ESPN",
       Titulo: "In Her Shoes",
-      Label: "Vimeo",
+      Label: "ESPN",
       linkVideoLargo: "https://vimeo.com/1015698133",
-      linkcorto: "https://vimeo.com/1015698133",  // linkcorto igual al linkVideoLargo
+      linkcorto: "https://vimeo.com/1015698133",  
       credits: [
         { title: "Client", value: "ESPN+ / ESPN Deportes" },
         { title: "Production Company", value: "ESPN Originals" },
@@ -215,11 +215,11 @@ const UpdatePrompt = () => {
       index: 8,
       src: "/mainVideos/testigos.mp4",
       poster: "/posters/3.webp",
-      btnText: "Testigos",
+      btnText: "Testigos / ESPN Deportes",
       Titulo: "Testigos",
-      Label: "Vimeo",
+      Label: "ESPN Deportes",
       linkVideoLargo: "https://vimeo.com/1015698601",
-      linkcorto: "https://vimeo.com/1015698601",  // linkcorto igual al linkVideoLargo
+      linkcorto: "https://vimeo.com/1015698601", 
       credits: [
         { title: "Client", value: "ESPN+ / ESPN Deportes" },
         { title: "Production Company", value: "ESPN Originals" },
@@ -238,11 +238,11 @@ const UpdatePrompt = () => {
       index: 9,
       src: "/mainVideos/ultimoTrenQatar.mp4",
       poster: "/posters/4.webp",
-      btnText: "Último tren a Qatar",
+      btnText: "Último tren a Qatar / ESPN",
       Titulo: "Último tren a Qatar",
-      Label: "Vimeo",
+      Label: "ESPN",
       linkVideoLargo: "https://vimeo.com/1015698797",
-      linkcorto: "https://vimeo.com/1015698797",  // linkcorto igual al linkVideoLargo
+      linkcorto: "https://vimeo.com/1015698797",  
       credits: [
         { title: "Client", value: "ESPN+ / ESPN Deportes" },
         { title: "Production Company", value: "ESPN Originals" },
@@ -264,11 +264,11 @@ const UpdatePrompt = () => {
       index: 10,
       src: "/mainVideos/ultimoTrenTokio.mp4",
       poster: "/posters/5.webp",
-      btnText: "Último tren a Tokio",
+      btnText: "Último tren a Tokio / ESPN",
       Titulo: "Último tren a Tokio",
-      Label: "Vimeo",
+      Label: "ESPN",
       linkVideoLargo: "https://vimeo.com/1015699753",
-      linkcorto: "https://vimeo.com/1015699753",  // linkcorto igual al linkVideoLargo
+      linkcorto: "https://vimeo.com/1015699753",  
       credits: [
         { title: "Client", value: "ESPN+ / ESPN Deportes" },
         { title: "Production Company", value: "ESPN Originals" },
@@ -288,11 +288,11 @@ const UpdatePrompt = () => {
       index: 11,
       src: "/mainVideos/espnBucketList.mp4",
       poster: "/posters/6.webp",
-      btnText: "The ESPN Bucket List",
+      btnText: "The ESPN Bucket List / ESPN",
       Titulo: "The ESPN Bucket List",
-      Label: "Vimeo",
+      Label: "ESPN",
       linkVideoLargo: "https://vimeo.com/1015702725",
-      linkcorto: "https://vimeo.com/1015702725",  // linkcorto igual al linkVideoLargo
+      linkcorto: "https://vimeo.com/1015702725",  
       credits: [
         { title: "Client", value: "ESPN+ / ESPN Deportes" },
         { title: "Production Company", value: "ESPN Originals / Bourke" },
@@ -315,9 +315,9 @@ const UpdatePrompt = () => {
       index: 0,
       src: "/mainVideos/equino.mp4",
       poster: "/posters/5.webp",
-      btnText: "Caballos / Monkey Label",
+      btnText: "Caballos / Lamar",
       Titulo: "Caballos",
-      Label: "Monkey Label",
+      Label: "Lamar",
       linkVideoLargo: "https://player.vimeo.com/video/1015331358",
       linkcorto: "/mainVideos/equino.mp4",
       credits: [
@@ -339,9 +339,9 @@ const UpdatePrompt = () => {
       index: 1,
       src: "/mainVideos/bodog.mp4",
       poster: "/posters/6.webp",
-      btnText: "Bodog / Monkey Label",
+      btnText: "Bodog / Pipol",
       Titulo: "Bodog",
-      Label: "Monkey Label",
+      Label: "Pipol",
       linkVideoLargo: "https://player.vimeo.com/video/1015332882",
       linkcorto: "/mainVideos/bodog.mp4",
       credits: [
@@ -363,9 +363,9 @@ const UpdatePrompt = () => {
       index: 2,
       src: "/mainVideos/pibank.mp4",
       poster: "",
-      btnText: "Pibank / Monkey Label - Family",
-      Titulo: "Pibank",
-      Label: "Monkey Label",
+      btnText: "Pibank - Family / Dentsu",
+      Titulo: "Pibank - Family",
+      Label: "Dentsu",
       linkVideoLargo: "https://vimeo.com/1015324735",
       linkcorto: "https://vimeo.com/1015324735",
       credits: [
@@ -396,9 +396,9 @@ const UpdatePrompt = () => {
       index: 3,
       src: "/mainVideos/baking.mp4",
       poster: "",
-      btnText: "Pibank / Monkey Label - Baking",
-      Titulo: "Baking",
-      Label: "Monkey Label",
+      btnText: "Pibank - Baking / Dentsu",
+      Titulo: "Pibank - Baking",
+      Label: "Dentsu",
       linkVideoLargo: "https://vimeo.com/1015710267",
       linkcorto: "https://vimeo.com/1015710267",
       credits: [
@@ -429,9 +429,9 @@ const UpdatePrompt = () => {
       index: 4,
       src: "/mainVideos/dj.mp4",
       poster: "",
-      btnText: "Pibank / Monkey Label - DJ",
-      Titulo: "DJ",
-      Label: "Monkey Label",
+      btnText: "Pibank - DJ / Dentsu",
+      Titulo: "Pibank - DJ",
+      Label: "Dentsu",
       linkVideoLargo: "https://vimeo.com/1015711450",
       linkcorto: "https://vimeo.com/1015711450",
       credits: [
@@ -462,9 +462,9 @@ const UpdatePrompt = () => {
       index: 5,
       src: "/mainVideos/garden.mp4",
       poster: "",
-      btnText: "Pibank / Monkey Label - Garden",
-      Titulo: "Garden",
-      Label: "Monkey Label",
+      btnText: "Pibank - Garden / Dentsu",
+      Titulo: "Pibank - Garden",
+      Label: "Dentsu",
       linkVideoLargo: "https://vimeo.com/1015711984",
       linkcorto: "https://vimeo.com/1015711984",
       credits: [
@@ -495,9 +495,9 @@ const UpdatePrompt = () => {
       index: 6,
       src: "/mainVideos/fabercastell.mp4",
       poster: "",
-      btnText: "Faber Castell",
+      btnText: "Faber Castell / Distrito Arte",
       Titulo: "Faber Castell",
-      Label: "",
+      Label: "Distrito Arte",
       linkVideoLargo: "https://vimeo.com/1015705604",
       linkcorto: "https://vimeo.com/1015705604",
       credits: [
@@ -521,13 +521,24 @@ const UpdatePrompt = () => {
       index: 7,
       src: "/mainVideos/fabercastell.mp4",
       poster: "",
-      btnText: "Coppel / Monkey Label",
+      btnText: "Coppel / Pipol",
       Titulo: "Coppel",
-      Label: "Monkey Label",
+      Label: "Pipol",
       linkVideoLargo: "https://vimeo.com/1036345626",
       linkcorto: "https://vimeo.com/1036345626",
       credits: [
-        { title: "Placeholder", value: "Placeholder" },
+        { title: "Agency", value: "Pipol" },
+        { title: "Client", value: "Bodog" },
+        { title: "Production Company", value: "Monkey Label Films" },
+        { title: "Director", value: "Juan Irigoyen" },
+        { title: "Executive Producer", value: "Daniela Martinez" },
+        { title: "Producer", value: "Carlos Marcellan" },
+        { title: "DOP", value: "Nicolas Gorla" },
+        { title: "Art Director", value: "Valentina Llorens" },
+        { title: "Post Production", value: "Monkey Label Films" },
+        { title: "Editor", value: "Daniela Benedetti" },
+        { title: "Colourist", value: "Juan Celestino" },
+        { title: "VFX", value: "Nicolas Agarzua" },
       ],
     },
   ];
@@ -580,10 +591,6 @@ const UpdatePrompt = () => {
   ];
 
 
-  //DOCUMENTARY HEIGHT
-  const containerWorkDivRef = useRef<HTMLDivElement | null>(null);
-  const containerWorkRef = useRef<HTMLDivElement | null>(null);
-
   const [selectedCategory, setSelectedCategory] = useState<Category>('DOCUMENTARY');
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -601,13 +608,10 @@ const UpdatePrompt = () => {
   return (
     <PageWrapper>
       <Suspense >
-        <div className={styles.containerWork}
-          ref={containerWorkRef}
-        >
+        <div className={styles.containerWork}>
 
           <div
             className={styles.containerWorkDiv}
-            ref={containerWorkDivRef}
           >
             <AnimatePresence >
               {selectedCategory === 'DOCUMENTARY' &&

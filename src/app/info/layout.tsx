@@ -14,8 +14,8 @@ type Category = 'DOCUMENTARY' | 'COMMERCIALS' | 'MUSIC';
 
 export default function NestedLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const footerRef = useRef<HTMLDivElement>(null); // Referencia al primer footer
-  const [isFooterVisible, setIsFooterVisible] = useState(false); // Estado para controlar la visibilidad del segundo footer
+  const footerRef = useRef<HTMLDivElement>(null);
+  const [isFooterVisible, setIsFooterVisible] = useState(false); 
 
   useEffect(() => {
     let title = "Monkey Label";
@@ -36,7 +36,6 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
     document.title = title;
   }, [pathname]);
 
-  // Intersection Observer footer en vista
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

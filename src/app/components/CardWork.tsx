@@ -37,7 +37,7 @@ const CardWork: React.FC<CardMainProps> = ({ indexCardWork, videos, linkcorto })
 
 
     const [modalVideoOpen, setModalVideoOpen] = useState(false);
-    const [currentIndex, setCurrentIndex] = useState(indexCardWork); // Controla el índice actual en el modal
+    const [currentIndex, setCurrentIndex] = useState(indexCardWork); 
 
    
 

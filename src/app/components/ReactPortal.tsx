@@ -19,7 +19,6 @@ function ReactPortal({ children, wrapperId} : {children:React.ReactElement; wrap
         let element = document.getElementById(wrapperId);
         let systemCreated = false;
 
-        //crear y añadir al body si no existe wrapperID
         if (!element) {
             systemCreated = true;
             element = createWrapperAndAppendToBody(wrapperId);
@@ -33,7 +32,6 @@ function ReactPortal({ children, wrapperId} : {children:React.ReactElement; wrap
         }
     }, [wrapperId]);
 
-    // wrapperElement va a ser null en el primer render
     if (!wrapperElement) return null;
 
     return createPortal(children, wrapperElement);
