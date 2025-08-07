@@ -9,6 +9,121 @@ export default function MainSlider() {
     const videosMainPage = [
         {
             index: 0,
+            src: "/mainVideos/tailandia.mp4",
+            poster: "/posters/9.webp",
+            btnText: "Greenland Thai",
+            Titulo: "Greenland Thai",
+            Label: "ESPN+ / ESPN DEPORTES",
+            linkVideoLargo: "https://player.vimeo.com/video/1108251993",
+            linkcorto: "/mainVideos/tailandia.mp4",
+            credits: [
+                { title: "Client", value: "ESPN+ / ESPN DEPORTES" },
+                { title: "Production Company", value: "ESPN ORIGINALS" },
+                { title: "Director", value: "JUAN IRIGOYEN (MONKEY LABEL) / MARTIN FRADKIN" },
+                { title: "Executive Producer", value: "EDGARDO MATTEI" },
+                { title: "Producer", value: "VILMA OBANDO" },
+                { title: "DOP", value: "JUAN IRIGOYEN (MONKEY LABEL) / CONRADO TAINA" },
+                { title: "1st AD", value: "RAFAEL URBINA" },
+                { title: "Sound", value: "CARLOS MARCELLAN" },
+                { title: "Post Production", value: "MONKEY LABEL FILMS" },
+                { title: "Editor", value: "DANIELA BENEDETTI" },
+                { title: "Assistant Editor", value: "BELEN RISSO PATRON" },
+                { title: "Colourist", value: "CLARA BIANCHI" },
+                { title: "Sound Design", value: "PAFUNDI / QUINTANA" },
+                { title: "Equipment", value: "KATPA" },
+            ]
+        },
+        {
+            index: 1,
+            src: "/mainVideos/michelob.mp4",
+            poster: "/posters/10.webp",
+            btnText: "MOB & NBA",
+            Titulo: "MOB & NBA",
+            Label: "We Believers",
+            linkVideoLargo: "https://player.vimeo.com/video/1108249732",
+            linkcorto: "/mainVideos/michelob.mp4",
+            credits: [
+                { title: "Agency", value: "We Believers" },
+                { title: "Client", value: "Michelob Ultra / NBA" },
+                { title: "Production Company", value: "Monkey Label Films" },
+                { title: "Director", value: "Santiago Franco" },
+                { title: "Director Assistant", value: "Jeronimo Toubes" },
+                { title: "Executive Producer", value: "Alexis Estiz / Daniela Martines / Martin Lappisonde" },
+                { title: "Head of Production", value: "Catalina Ward" },
+                { title: "Creative Director", value: "Martin Fradkin / Juan Irigoyen" },
+                { title: "Producer", value: "Esteban Pava" },
+                { title: "Casting", value: "Castingland" },
+                { title: "DOP", value: "Manuel Bullrich" },
+                { title: "Cam Op", value: "Gerald Lee" },
+                { title: "1st AC", value: "Josue Corredor" },
+                { title: "2nd AC", value: "Natalia Canon" },
+                { title: "DIT", value: "Timur Gravilenko" },
+                { title: "Art Director", value: "Set Machine" },
+                { title: "Editor", value: "" },
+                { title: "Colourist", value: "" },
+                { title: "Sound Design", value: "Pickle Music" },
+                { title: "VFX Supervisor", value: "Opposite Visuals" },
+                { title: "Motion Graphics", value: "Opposite Visuals" },
+            ]
+        },
+        {
+            index: 2,
+            src: "/mainVideos/mls.mp4",
+            poster: "/posters/11.webp",
+            btnText: "Game Changers 2 / Apple TV",
+            Titulo: "Game Changers 2",
+            Label: "Apple TV",
+            linkVideoLargo: "https://player.vimeo.com/video/1108249732",
+            linkcorto: "/mainVideos/mls.mp4",
+            credits: [
+                { title: "Client", value: "APPLE TV / MLS" },
+                { title: "Production Company", value: "MONKEY LABEL FILMS" },
+                { title: "Director", value: "JUAN IRIGOYEN" },
+                { title: "Director Assistant", value: "RAFAEL URBINA" },
+                { title: "Executive Producer", value: "ALEXIS ESTIZ / DANIELA MARTINEZ / MARTIN LAPISSONDE" },
+                { title: "Producer", value: "TOMAS FERRARO" },
+                { title: "DOP", value: "GERALD LEE" },
+                { title: "Camera", value: "MARCO PERRETA" },
+                { title: "Sound", value: "ARIEL NOVO CURIEL" },
+                { title: "Post Production", value: "MONKEY LABEL FILMS" },
+                { title: "Editor", value: "DANIELA BENEDETTI" },
+                { title: "Editor", value: "DENISE UMASCHI" },
+                { title: "Editor", value: "ANDREA USHER / AGUSTIN SVARZ" },
+                { title: "Editor", value: "PABLO CACERES" },
+                { title: "Editor", value: "JUAN LAZARO" },
+                { title: "Editor", value: "TOMAS D'ANTONIO" },
+                { title: "Assistant Editor", value: "BELEN RISSO PATRON" },
+                { title: "Delivery", value: "GABRIELA CASTRO" },
+                { title: "Colourist", value: "JUAN CELESTINO" },
+                { title: "Sound Design", value: "GUILLERMO QUINTANA / SANTIAGO PAFUNDI" },
+            ]
+        },
+        {
+            index: 3,
+            src: "/mainVideos/jrteaser.mp4",
+            poster: "/posters/12.webp",
+            btnText: "PROTAGONISTA",
+            Titulo: "PROTAGONISTA",
+            Label: "Disney+",
+            linkVideoLargo: "https://player.vimeo.com/video/1108252052",
+            linkcorto: "/mainVideos/jrteaser.mp4",
+            credits: [
+                { title: "Client", value: "DISNEY+" },
+                { title: "Production Company", value: "ESPN ORIGINALS" },
+                { title: "Executive Producer", value: "EDGARDO MATTEI" },
+                { title: "Producer", value: "VILMA OBANDO" },
+                { title: "DOP", value: "JUAN IRIGOYEN (MONKEY LABEL) / GERALD LEE" },
+                { title: "Sound", value: "CARLOS MARCELLAN" },
+                { title: "Post Production", value: "MONKEY LABEL FILMS" },
+                { title: "Editor", value: "DANIELA BENEDETTI" },
+                { title: "Assistant Editor", value: "BELEN RISSO PATRON" },
+                { title: "Colourist", value: "CLARA BIANCHI" },
+                { title: "Sound Design", value: "PAFUNDI / QUINTANA" },
+                { title: "Equipment", value: "HD HOUSE" },
+            ]
+        },
+        {
+            index: 4,
             src: "/mainVideos/gamechangers.mp4",
             poster: "/posters/0.webp",
             btnText: "Game Changers / Apple TV",
@@ -38,7 +153,7 @@ export default function MainSlider() {
             ],
         },
         {
-            index: 1,
+            index: 5,
             src: "/mainVideos/greenland.mp4",
             poster: "/posters/1.webp",
             btnText: "Greenland / ESPN",
@@ -64,7 +179,7 @@ export default function MainSlider() {
             ],
         },
         {
-            index: 2,
+            index: 6,
             src: "/mainVideos/valeria.mp4",
             poster: "/posters/2.webp",
             btnText: "Valeria Mazza / Paramount+",
@@ -88,7 +203,7 @@ export default function MainSlider() {
             ],
         },
         {
-            index: 3,
+            index: 7,
             src: "/mainVideos/pibank.mp4",
             poster: "/posters/3.webp",
             btnText: "Pibank / Monkey Label",
@@ -121,7 +236,7 @@ export default function MainSlider() {
             ],
         },
         {
-            index: 4,
+            index: 8,
             src: "/mainVideos/mdf.mp4",
             poster: "/posters/4.webp",
             btnText: "Misterios del Fútbol / FIFA+",
@@ -149,99 +264,11 @@ export default function MainSlider() {
                 { title: "Sound Design", value: "Guillermo Quintana / Santiago Pafundi" },
             ],
         },
-        {
-            index: 5,
-            src: "/mainVideos/equino.mp4",
-            poster: "/posters/5.webp",
-            btnText: "Caballos / Monkey Label",
-            Titulo: "Caballos",
-            Label: "Monkey Label",
-            linkVideoLargo: "https://player.vimeo.com/video/1015331358",
-            linkcorto: "/mainVideos/equino.mp4",
-            credits: [
-                { title: "Client", value: "LAMAR" },
-                { title: "Production Company", value: "MONKEY LABEL FILMS" },
-                { title: "Director", value: "JUAN IRIGOYEN" },
-                { title: "Executive Producer", value: "DANIELA MARTINEZ" },
-                { title: "Producer", value: "DANIELA MARTINEZ" },
-                { title: "DOP", value: "NICOLAS GORLA" },
-                { title: "Sound", value: "CARLOS MARCELLAN" },
-                { title: "Post Production", value: "MONKEY LABEL FILMS" },
-                { title: "Editor", value: "DANIELA BENEDETTI" },
-                { title: "Colourist", value: "JUAN CELESTINO" },
-                { title: "Sound Design", value: "PAFUNDI / QUINTANA" },
-                { title: "Equipment", value: "KATPA" },
-            ],
-        },
-        {
-            index: 6,
-            src: "/mainVideos/bodog.mp4",
-            poster: "/posters/6.webp",
-            btnText: "Bodog / Monkey Label",
-            Titulo: "Bodog",
-            Label: "Monkey Label",
-            linkVideoLargo: "https://player.vimeo.com/video/1015332882",
-            linkcorto: "/mainVideos/bodog.mp4",
-            credits: [
-                { title: "Agency", value: "Pipol" },
-                { title: "Client", value: "Bodog" },
-                { title: "Production Company", value: "Monkey Label Films" },
-                { title: "Director", value: "Juan Irigoyen" },
-                { title: "Executive Producer", value: "Daniela Martinez" },
-                { title: "Producer", value: "Carlos Marcellan" },
-                { title: "DOP", value: "Nicolas Gorla" },
-                { title: "Art Director", value: "Valentina Llorens" },
-                { title: "Post Production", value: "Monkey Label Films" },
-                { title: "Editor", value: "Daniela Benedetti" },
-                { title: "Colourist", value: "Juan Celestino" },
-                { title: "VFX", value: "Nicolas Agarzua" },
-            ],
-        },
-        {
-            index: 7,
-            src: "/mainVideos/china.mp4",
-            poster: "/posters/7.webp",
-            btnText: "Ay Ay Ay China Suarez / Bourke",
-            Titulo: "Ay Ay Ay China Suarez",
-            Label: "Bourke",
-            linkVideoLargo: "https://player.vimeo.com/video/1015330661",
-            linkcorto: "/mainVideos/china.mp4",
-            credits: [
-                { title: "Artist", value: "China Suarez" },
-                { title: "Production Company", value: "Bourke" },
-                { title: "Director", value: "Martin Fradkin (Monkey Label)" },
-                { title: "Executive Producer", value: "Rodolfo Lamboglia" },
-                { title: "Producer", value: "Rocio Taboada" },
-                { title: "DOP", value: "Gerald Lee / Juan Carlos Sauczuk" },
-                { title: "Art Director", value: "Set Machine" },
-                { title: "Post Production", value: "Bourke" },
-                { title: "Editor", value: "Pablo Caceres Medina" },
-                { title: "Colourist", value: "Juan Celestino" },
-                { title: "Equipment", value: "HD House" },
-            ],
-        },
-        {
-            index: 8,
-            src: "/mainVideos/touching.mp4",
-            poster: "/posters/8.webp",
-            btnText: "Rauw Alejandro (Backstage Touching the Sky)",
-            Titulo: "(Backstage Touching the Sky)",
-            Label: "Rauw Alejandro",
-            linkVideoLargo: "https://player.vimeo.com/video/1015300321",
-            linkcorto: "/mainVideos/touching.mp4",
-            credits: [
-                { title: "Artist", value: "Rauw Alejandro" },
-                { title: "Director", value: "Marco Perreta" },
-                { title: "Producer", value: "Daniela Martinez / Guli Corradetti (Monkey Label)" },
-                { title: "DOP", value: "Martin Fradkin / Juan Irigoyen (Monkey Label)" },
-                { title: "Sound", value: "Carlos Marcellan (Monkey Label)" },
-                { title: "Editor", value: "Andrea Usher" },
-                { title: "Colourist", value: "Isaias Bovio" },
-            ],
-        },
+
+
     ];
-    
-    
+
+
 
     const FAST_D = 30;
     const SLOW_D = 7500;
@@ -258,11 +285,11 @@ export default function MainSlider() {
     const sliderRef = useRef<HTMLDivElement>(null);
     const [width, setWidth] = useState(0);
 
-  //  useEffect(() => {
-  //      if (sliderRef.current) {
-  //          setWidth(sliderRef.current.offsetWidth);
- //     }
- // }, [sliderRef.current]);
+    //  useEffect(() => {
+    //      if (sliderRef.current) {
+    //          setWidth(sliderRef.current.offsetWidth);
+    //     }
+    // }, [sliderRef.current]);
 
 
     const handleTranslateComplete = () => {
@@ -328,7 +355,7 @@ export default function MainSlider() {
                 drag="x"
                 dragConstraints={{ left: -width / 2, right: 0 }}
                 dragTransition={{ power: 0.2, bounceStiffness: 300, bounceDamping: 20 }}
-                
+
                 onDragStart={() => {
                     setMustFinish(true);
                 }}
