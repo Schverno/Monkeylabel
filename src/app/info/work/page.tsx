@@ -13,7 +13,7 @@ const UpdatePrompt = () => {
   const videosDOCUMENTARY = [
 
     {
-      index: 12,
+      index: 0,
       src: "/mainVideos/mls.mp4",
       poster: "/posters/11.webp",
       btnText: "Game Changers 2 / Apple TV",
@@ -45,7 +45,7 @@ const UpdatePrompt = () => {
       ]
     },
     {
-      index: 13,
+      index: 1,
       src: "/mainVideos/jrteaser.mp4",
       poster: "/posters/12.webp",
       btnText: "Protagonista / Disney+",
@@ -69,7 +69,7 @@ const UpdatePrompt = () => {
       ]
     },
     {
-      index: 14,
+      index: 2,
       src: "/mainVideos/tailandia.mp4",
       poster: "/posters/9.webp",
       btnText: "Greenland / ESPN",
@@ -95,7 +95,7 @@ const UpdatePrompt = () => {
       ]
     },
     {
-      index: 0,
+      index: 3,
       src: "/mainVideos/gamechangers.mp4",
       poster: "/posters/0.webp",
       btnText: "Game Changers / Apple TV",
@@ -125,7 +125,7 @@ const UpdatePrompt = () => {
       ],
     },
     {
-      index: 1,
+      index: 4,
       src: "/mainVideos/greenland.mp4",
       poster: "/posters/1.webp",
       btnText: "Greenland / ESPN",
@@ -151,7 +151,7 @@ const UpdatePrompt = () => {
       ],
     },
     {
-      index: 2,
+      index: 5,
       src: "/mainVideos/valeria.mp4",
       poster: "/posters/1.webp",
       btnText: "Valeria Mazza / Paramount+",
@@ -175,7 +175,7 @@ const UpdatePrompt = () => {
       ],
     },
     {
-      index: 3,
+      index: 6,
       src: "/mainVideos/mdf.mp4",
       poster: "/posters/4.webp",
       btnText: "Misterios del Fútbol / FIFA+",
@@ -204,7 +204,7 @@ const UpdatePrompt = () => {
       ],
     },
     {
-      index: 4,
+      index: 7,
       src: "/mainVideos/touching.mp4",
       poster: "/posters/8.webp",
       btnText: "Rauw Alejandro (Backstage Touching The Sky)",
@@ -223,7 +223,7 @@ const UpdatePrompt = () => {
       ],
     },
     {
-      index: 5,
+      index: 8,
       src: "/mainVideos/ultimoTrenParis.mp4",
       poster: "/posters/0.webp",
       btnText: "Último Tren a Paris / ESPN",
@@ -250,7 +250,7 @@ const UpdatePrompt = () => {
       ],
     },
     {
-      index: 6,
+      index: 9,
       src: "/mainVideos/beplaying.mp4",
       poster: "/posters/1.webp",
       btnText: "Beplaying / Disney+",
@@ -271,7 +271,7 @@ const UpdatePrompt = () => {
       ],
     },
     {
-      index: 7,
+      index: 10,
       src: "/mainVideos/inHerShoes.mp4",
       poster: "/posters/2.webp",
       btnText: "In Her Shoes / ESPN",
@@ -294,7 +294,7 @@ const UpdatePrompt = () => {
       ],
     },
     {
-      index: 8,
+      index: 11,
       src: "/mainVideos/testigos.mp4",
       poster: "/posters/3.webp",
       btnText: "Testigos / ESPN Deportes",
@@ -317,7 +317,7 @@ const UpdatePrompt = () => {
       ],
     },
     {
-      index: 9,
+      index: 12,
       src: "/mainVideos/ultimoTrenQatar.mp4",
       poster: "/posters/4.webp",
       btnText: "Último tren a Qatar / ESPN",
@@ -343,7 +343,7 @@ const UpdatePrompt = () => {
       ],
     },
     {
-      index: 10,
+      index: 13,
       src: "/mainVideos/ultimoTrenTokio.mp4",
       poster: "/posters/5.webp",
       btnText: "Último tren a Tokio / ESPN",
@@ -367,7 +367,7 @@ const UpdatePrompt = () => {
       ],
     },
     {
-      index: 11,
+      index: 14,
       src: "/mainVideos/espnBucketList.mp4",
       poster: "/posters/6.webp",
       btnText: "The ESPN Bucket List / ESPN",
