@@ -2,11 +2,14 @@
 
 import styles from '../styles/mainSlider.module.scss';
 import CardMain from '../components/CardMain';
+import ProjectPlaceholder from './ProjectPlaceholder';
+import { pendingProjects } from '../utils/pendingProjects';
 import { motion, animate, useMotionValue } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 
 export default function MainSlider() {
     const videosMainPage = [
+        ...pendingProjects,
         {
             index: 0,
             src: "/mainVideos/tailandia.mp4",
@@ -40,7 +43,7 @@ export default function MainSlider() {
             btnText: "Michelob Ultra & NBA",
             Titulo: "Michelob Ultra & NBA",
             Label: "We Believers",
-            linkVideoLargo: "https://player.vimeo.com/video/1108249732",
+            linkVideoLargo: "https://player.vimeo.com/video/1108249540",
             linkcorto: "/mainVideos/michelob.mp4",
             credits: [
                 { title: "Agency", value: "We Believers" },
@@ -271,6 +274,7 @@ export default function MainSlider() {
 
 
     const FAST_D = 30;
+    const playableVideos = videosMainPage.filter((video) => video.linkVideoLargo);
     const SLOW_D = 7500;
 
     const [duration, setDuration] = useState(SLOW_D);
@@ -283,7 +287,27 @@ export default function MainSlider() {
     const [animationPhase, setAnimationPhase] = useState("translatePhase");
 
     const sliderRef = useRef<HTMLDivElement>(null);
+    const viewportRef = useRef<HTMLElement>(null);
+    const [isPageVisible, setIsPageVisible] = useState(true);
+    const [isSliderVisible, setIsSliderVisible] = useState(false);
+    const [previewsPaused, setPreviewsPaused] = useState(false);
     const [width, setWidth] = useState(0);
+
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            setIsPageVisible(document.visibilityState === 'visible');
+        };
+        handleVisibilityChange();
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        const observer = new IntersectionObserver(([entry]) => {
+            setIsSliderVisible(entry.isIntersecting && entry.intersectionRatio > 0);
+        });
+        if (viewportRef.current) observer.observe(viewportRef.current);
+        return () => {
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            observer.disconnect();
+        };
+    }, []);
 
     //  useEffect(() => {
     //      if (sliderRef.current) {
@@ -339,7 +363,7 @@ export default function MainSlider() {
 
 
     return (
-        <main className={styles.main}>
+        <main ref={viewportRef} className={styles.main}>
             <motion.div
                 className={`${styles.mainSliderContainer} absolute left-0 flex gap-5`}
                 ref={sliderRef}
@@ -427,7 +451,10 @@ export default function MainSlider() {
                         animate={animationPhase}
                     // DEBUG <div className="debug-width"> Width: {width}px </div>
                     >
-                        <CardMain src={video.src} btnText={video.btnText} poster={video.poster} key={idx} index={video.index} videos={videosMainPage} />
+                        {!video.linkVideoLargo ? <ProjectPlaceholder title={video.btnText} home /> :
+                        <CardMain src={video.src} btnText={video.btnText} poster={video.poster} key={idx} index={playableVideos.indexOf(video)} videos={playableVideos}
+                            viewportRef={viewportRef} isPageVisible={isPageVisible && isSliderVisible && (animationPhase === 'staggerPhase' || idx === 0)}
+                            previewsPaused={previewsPaused} onModalOpenChange={setPreviewsPaused} />}
                     </motion.div>
                 ))}
             </motion.div>

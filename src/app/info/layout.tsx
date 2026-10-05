@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import React, { useEffect, useState, useRef, Suspense } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import styles from '../styles/layoutnested.module.scss';
 import { LayoutWrapper } from '@/app/components/layout-wrapper';
@@ -9,8 +9,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import FooterNested from '../components/footerNested';
 import { IoClose } from 'react-icons/io5';
 import { RiMenuLine } from "react-icons/ri";
-
-type Category = 'DOCUMENTARY' | 'COMMERCIALS' | 'MUSIC';
+import WorkCategoryNavigation from '../components/WorkCategoryNavigation';
 
 export default function NestedLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -112,15 +111,6 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
   //VIDEO MENU
   const [isHovered, setIsHovered] = useState(false);
 
-  //PASAR CATEGORIAS WORK
-  const router = useRouter();
-  const [selectedCategory, setSelectedCategory] = useState<Category>('DOCUMENTARY');
-
-  const handleSelect = (category: Category) => {
-    setSelectedCategory(category);
-    router.push(`/info/work?category=${category}`);
-  };
-
  
   return (
 
@@ -160,34 +150,9 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
 
           <AnimatePresence>
             {pathname === '/info/work' && (
-              <>
-                <motion.div
-                  initial={{ opacity: 0, translateX: 30 }}
-                  animate={{ opacity: 1, translateX: 0 }}
-                  exit={{ opacity: 0 }}
-                  className={`${styles.navList} h-[30px] overflow-hidden font-semibold text-lg flex items-start gap-2`}
-
-                >
-                  {['DOCUMENTARY', 'COMMERCIALS', 'MUSIC'].map((category) => (
-                    <motion.div
-                      key={category}
-                      onClick={() => {
-                        if (['DOCUMENTARY', 'COMMERCIALS', 'MUSIC'].includes(category)) {
-                          handleSelect(category as Category); 
-                        }
-                      }} whileHover={{ y: -30 }}
-                      animate={{ opacity: selectedCategory === category ? 1 : 0.5 }}
-
-
-                    >
-                      <span className={`flex items-center h-[30px]`}>
-                        {category}
-                      </span>
-                      <span className="flex items-center h-[30px] ">{category}</span>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </>
+              <Suspense fallback={null}>
+                <WorkCategoryNavigation />
+              </Suspense>
             )}
           </AnimatePresence>
 
@@ -270,27 +235,9 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
 
         <AnimatePresence>
           {pathname === '/info/work' && (
-            <>
-              <motion.div
-                initial={{ opacity: 0, translateY: 30 }}
-                animate={{ opacity: 1, translateY: 0 }}
-                exit={{ opacity: 0, translateY: -10 }}
-                className={styles.navlistMobile}
-              >
-                {(['DOCUMENTARY', 'COMMERCIALS', 'MUSIC'] as Category[]).map((category) => (
-                  <motion.div
-                    key={category}
-                    onClick={() => handleSelect(category)}
-                    animate={{
-                      opacity: selectedCategory === category ? 1 : 0.5,
-                      transition: { duration: 0.3 },
-                    }}
-                  >
-                    {category}
-                  </motion.div>
-                ))}
-              </motion.div>
-            </>
+            <Suspense fallback={null}>
+              <WorkCategoryNavigation mobile />
+            </Suspense>
           )}
         </AnimatePresence>
 

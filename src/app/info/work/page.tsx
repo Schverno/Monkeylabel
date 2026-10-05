@@ -1,16 +1,19 @@
 'use client'
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { PageWrapper } from '@/app/components/page-wrapper';
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from '@/app/styles/work.module.scss'
 import CardWork from '../../components/CardWork';
+import ProjectPlaceholder from '../../components/ProjectPlaceholder';
+import { pendingProjects } from '../../utils/pendingProjects';
 
-type Category = 'DOCUMENTARY' | 'COMMERCIALS' | 'MUSIC';
+import { getWorkCategory } from '../../utils/workCategories';
 
 
 const UpdatePrompt = () => {
   const videosDOCUMENTARY = [
+    ...pendingProjects,
 
     {
       index: 0,
@@ -401,7 +404,7 @@ const UpdatePrompt = () => {
       btnText: "Michelob Ultra & NBA",
       Titulo: "Michelob Ultra & NBA",
       Label: "We Believers",
-      linkVideoLargo: "https://player.vimeo.com/video/1108249732",
+      linkVideoLargo: "https://player.vimeo.com/video/1108249540",
       linkcorto: "/mainVideos/michelob.mp4",
       credits: [
         { title: "Agency", value: "We Believers" },
@@ -707,18 +710,19 @@ const UpdatePrompt = () => {
   ];
 
 
-  const [selectedCategory, setSelectedCategory] = useState<Category>('DOCUMENTARY');
   const searchParams = useSearchParams();
+  const playableDocumentaries = videosDOCUMENTARY.filter((video) => video.linkVideoLargo);
   const router = useRouter();
+  const category = searchParams.get('category');
+  const selectedCategory = getWorkCategory(category);
 
   useEffect(() => {
-    const category = searchParams.get('category');
-    if (category && ['DOCUMENTARY', 'COMMERCIALS', 'MUSIC'].includes(category)) {
-      setSelectedCategory(category as Category);
-    } else {
-      router.push('/info/work?category=DOCUMENTARY');
+    if (category !== selectedCategory) {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set('category', selectedCategory);
+      router.replace(`/info/work?${params.toString()}`, { scroll: false });
     }
-  }, [searchParams, router]);
+  }, [category, selectedCategory, searchParams, router]);
 
 
   return (
@@ -782,7 +786,8 @@ const UpdatePrompt = () => {
                       className={styles.containerVideosIN}
                     >
                       <div className={styles.video}>
-                        <CardWork src={video.src} linkcorto={video.linkcorto} linkLargo={video.linkVideoLargo} btnText={video.btnText} poster={video.poster} key={idxWork} indexCardWork={video.index} videos={videosDOCUMENTARY} />
+                        {!video.linkVideoLargo ? <ProjectPlaceholder title={video.btnText} /> :
+                          <CardWork src={video.src} linkcorto={video.linkcorto} linkLargo={video.linkVideoLargo} btnText={video.btnText} poster={video.poster} key={idxWork} indexCardWork={playableDocumentaries.indexOf(video)} videos={playableDocumentaries} />}
                       </div>
                       <div className={styles.videoText}>
                         <p>{video.btnText} </p>

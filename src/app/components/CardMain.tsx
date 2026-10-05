@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRef } from "react";
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useSpring, } from 'framer-motion'
 import styles from '../styles/mainCard.module.scss';
@@ -14,6 +14,10 @@ interface CardMainProps {
     index: number;
     poster: string;
     btnText: string;
+    viewportRef: React.RefObject<HTMLElement>;
+    isPageVisible: boolean;
+    previewsPaused: boolean;
+    onModalOpenChange: (isOpen: boolean) => void;
     videos: {
         src: string;
         poster: string;
@@ -30,11 +34,55 @@ interface CardMainProps {
     }[];
 }
 
-const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos }) => {
+const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos, viewportRef, isPageVisible, previewsPaused, onModalOpenChange }) => {
 
 
     const [isLoaded, setIsLoaded] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
+    const [isNearViewport, setIsNearViewport] = useState(false);
+    const [isInViewport, setIsInViewport] = useState(false);
+    const [hasVideoSource, setHasVideoSource] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        const card = cardRef.current;
+        if (!card) return;
+
+        const loadingObserver = new IntersectionObserver(([entry]) => {
+            setIsNearViewport(entry.isIntersecting);
+        }, { root: viewportRef.current, rootMargin: '0px 220px' });
+        const playbackObserver = new IntersectionObserver(([entry]) => {
+            setIsInViewport(entry.isIntersecting && entry.intersectionRatio > 0);
+        }, { threshold: [0, 0.01] });
+
+        loadingObserver.observe(card);
+        playbackObserver.observe(card);
+        return () => {
+            loadingObserver.disconnect();
+            playbackObserver.disconnect();
+        };
+    }, [viewportRef]);
+
+    useEffect(() => {
+        if (isNearViewport && isPageVisible && !previewsPaused) {
+            setHasVideoSource(true);
+        }
+    }, [isNearViewport, isPageVisible, previewsPaused]);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        if (hasVideoSource && isInViewport && isPageVisible && !previewsPaused) {
+            // Autoplay restrictions or a subsequent pause can reject play().
+            void video.play().catch(() => {});
+        } else {
+            video.pause();
+        }
+
+        return () => video.pause();
+    }, [hasVideoSource, isInViewport, isPageVisible, previewsPaused]);
 
     const ref = useRef<HTMLButtonElement | null>(null);
 
@@ -72,6 +120,12 @@ const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos
 
     const [modalVideoOpen, setModalVideoOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(index); // índice actual 
+
+    useEffect(() => {
+        if (!modalVideoOpen) return;
+        onModalOpenChange(true);
+        return () => onModalOpenChange(false);
+    }, [modalVideoOpen, onModalOpenChange]);
 
     const handleNext = () => {
         setCurrentIndex((prevIndex) => {
@@ -116,13 +170,14 @@ const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos
 
     const handleClick = () => {
         if (!isDragging) {
+            setCurrentIndex(index);
             setModalVideoOpen(true); // Solo abre el modal si no fue un drag
         }
     };
 
     return (
         <motion.div
-
+            ref={cardRef}
             onHoverStart={() => {
                 setShowOverlay(true);
             }}
@@ -138,8 +193,9 @@ const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos
             transition={{ ease: [0.76, 0, 0.24, 1], type: "spring", stiffness: 200, damping: 20 }}
             className='relative overflow-hidden h-[var(--hmaincards)]  w-[var(--wmaincards)] bg-slate-400 rounded-xl cursor-pointer'>
             <video
-                src={src}
-                autoPlay
+                ref={videoRef}
+                src={hasVideoSource ? src : undefined}
+                preload={isNearViewport && isPageVisible && !previewsPaused ? 'auto' : 'none'}
                 loop
                 muted
                 playsInline
@@ -194,7 +250,7 @@ const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos
                     <ModalVideo
                         key={index}
                         isOpen={modalVideoOpen}
-                        handleClose={() => setModalVideoOpen(!modalVideoOpen)}
+                        handleClose={() => setModalVideoOpen(false)}
                         currentVideo={currentVideo}
                         previousVideo={previousVideo}
                         nextVideo={nextVideo}

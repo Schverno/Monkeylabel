@@ -64,6 +64,7 @@ const CardWork: React.FC<CardMainProps> = ({ indexCardWork, videos, linkcorto })
 
 
     const handleClick = () => {
+        setCurrentIndex(indexCardWork);
         setModalVideoOpen(true);
     };
 
@@ -102,7 +103,7 @@ const CardWork: React.FC<CardMainProps> = ({ indexCardWork, videos, linkcorto })
                     <ModalVideo
                         key={indexCardWork}
                         isOpen={modalVideoOpen}
-                        handleClose={() => setModalVideoOpen(!modalVideoOpen)}
+                        handleClose={() => setModalVideoOpen(false)}
                         currentVideo={currentVideo}
                         previousVideo={previousVideo}
                         nextVideo={nextVideo}

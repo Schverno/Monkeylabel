@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import ReactPortal from './ReactPortal'
 import styles from '../styles/modalvideo.module.scss'
 import { AnimatePresence, motion } from 'framer-motion'
-import ReactPlayer from 'react-player/vimeo'
+import ReactPlayer from 'react-player/lazy'
 import { IoClose, IoPlayOutline, IoPause, IoPlaySkipForward, IoPlaySkipBack, IoVolumeMute, IoVolumeHigh } from "react-icons/io5";
 
 
@@ -102,6 +102,11 @@ const ModalVideo = ({
     const playerRef = useRef<ReactPlayer>(null);
 
     const [isPlaying, setIsPlaying] = useState(true);
+
+    useEffect(() => {
+        setCurrentTime(0);
+        setDuration(0);
+    }, [currentVideo.linkVideoLargo]);
 
     const handlePlayPause = () => {
         setIsPlaying(!isPlaying);
@@ -264,6 +269,8 @@ const ModalVideo = ({
                             url={currentVideo.linkVideoLargo}
                             onStart={handleReady}
                             onReady={handleReady}
+                            onDuration={setDuration}
+                            config={{ file: { attributes: { preload: 'metadata', poster: currentVideo.poster } } }}
                             width='100%'
                             height='100%'
                         />

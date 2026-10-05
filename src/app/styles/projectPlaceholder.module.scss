@@ -1,0 +1,35 @@
+.placeholder {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #202020;
+    color: #fff;
+}
+
+.home {
+    width: var(--wmaincards);
+    height: var(--hmaincards);
+}
+
+.frame {
+    width: 64px;
+    aspect-ratio: 16 / 9;
+    border: 1px solid #707070;
+}
+
+.title {
+    position: absolute;
+    right: 20px;
+    bottom: 24px;
+    left: 20px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
