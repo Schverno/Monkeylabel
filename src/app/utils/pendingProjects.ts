@@ -1,6 +1,6 @@
 export const pendingProjects = [
     {
-        title: 'El día que Maradona regresó al Azteca',
+        title: 'El día que Maradona regresó al Azteca / DISNEY+',
         src: '/mainVideos/maradona.mp4',
         poster: '/posters/maradona.webp',
         linkVideoLargo: '/videos/maradona-trailer.mp4',
@@ -26,7 +26,7 @@ export const pendingProjects = [
         ],
     },
     {
-        title: 'Último Tren a Norteamérica',
+        title: 'Último Tren a Norteamérica / DISNEY+',
         src: '/mainVideos/ultimo-tren-norteamerica.mp4',
         poster: '/posters/ultimo-tren-norteamerica.webp',
         linkVideoLargo: '/videos/ultimo-tren-norteamerica-trailer.mp4',
