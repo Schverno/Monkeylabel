@@ -5,7 +5,7 @@ import CardMain from '../components/CardMain';
 import ProjectPlaceholder from './ProjectPlaceholder';
 import { pendingProjects } from '../utils/pendingProjects';
 import { motion, animate, useMotionValue } from 'framer-motion';
-import { useEffect, useState, useRef } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
 
 export default function MainSlider() {
     const videosMainPage = [
@@ -316,7 +316,7 @@ export default function MainSlider() {
     // }, [sliderRef.current]);
 
 
-    const handleTranslateComplete = () => {
+    const handleTranslateComplete = useCallback(() => {
         setAnimationPhase("staggerPhase");
         xTranslation.set(0);
         setMustFinish(true);
@@ -327,7 +327,7 @@ export default function MainSlider() {
             setWidth(sliderRef.current.offsetWidth);
         }
 
-    };
+    }, [xTranslation]);
 
 
 
@@ -344,7 +344,7 @@ export default function MainSlider() {
                     setMustFinish(false);
                     handleTranslateComplete();
                     xTranslation.set(0);
-                    setRenderer(!rerender);
+                    setRenderer((current) => !current);
 
                 }
             });
@@ -359,7 +359,7 @@ export default function MainSlider() {
         }
 
         return controls?.stop;
-    }, [xTranslation, width, duration, rerender]);
+    }, [xTranslation, width, duration, mustFinish, handleTranslateComplete, rerender]);
 
 
     return (

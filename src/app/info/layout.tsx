@@ -49,13 +49,15 @@ export default function NestedLayout({ children }: { children: React.ReactNode }
       { threshold: 0.5 }
     );
 
-    if (footerRef.current) {
-      observer.observe(footerRef.current);
+    const footerElement = footerRef.current;
+
+    if (footerElement) {
+      observer.observe(footerElement);
     }
 
     return () => {
-      if (footerRef.current) {
-        observer.unobserve(footerRef.current);
+      if (footerElement) {
+        observer.unobserve(footerElement);
       }
     };
   }, []);

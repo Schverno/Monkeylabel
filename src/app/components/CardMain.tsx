@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useRef } from "react";
+import Image from 'next/image';
 import { AnimatePresence, motion, useMotionTemplate, useMotionValue, useSpring, } from 'framer-motion'
 import styles from '../styles/mainCard.module.scss';
 
@@ -205,11 +206,13 @@ const CardMain: React.FC<CardMainProps> = ({ src, poster, btnText, index, videos
                 className={`absolute top-0 left-0 w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
             />
             {!isLoaded && (
-                <img
+                <Image
                     src={poster}
-                    draggable="false"
+                    fill
+                    sizes="(max-width: 768px) 70vw, 350px"
+                    draggable={false}
                     alt={"preload" + poster}
-                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    className="object-cover"
                 />
             )}
 
