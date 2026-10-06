@@ -3,7 +3,7 @@ export const pendingProjects = [
         title: 'El día que Maradona regresó al Azteca / DISNEY+',
         src: '/mainVideos/maradona.mp4',
         poster: '/posters/maradona.webp',
-        linkVideoLargo: '/videos/maradona-trailer.mp4',
+        linkVideoLargo: '/videos/maradona-trailer.mp4', 
         Label: 'ESPN+ / DISNEY+',
         credits: [
             { title: 'Client', value: 'ESPN+ / DISNEY+' },
