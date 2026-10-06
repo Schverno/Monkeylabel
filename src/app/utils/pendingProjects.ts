@@ -1,10 +1,10 @@
 export const pendingProjects = [
     {
-        title: 'El día que Maradona regresó al Azteca / DISNEY+',
+        title: 'El día que Maradona regresó al Azteca / Disney+',
         src: '/mainVideos/maradona2.mp4',
         poster: '/posters/maradona2.webp',
         linkVideoLargo: '/videos/maradona-trailer.mp4', 
-        Label: 'ESPN+ / DISNEY+',
+        Label: 'Disney+',
         credits: [
             { title: 'Client', value: 'ESPN+ / DISNEY+' },
             { title: 'Production Company', value: 'ESPN ORIGINALS / MONKEY LABEL FILMS' },
@@ -26,11 +26,11 @@ export const pendingProjects = [
         ],
     },
     {
-        title: 'Último Tren a Norteamérica / DISNEY+',
+        title: 'Último Tren a Norteamérica / Disney+',
         src: '/mainVideos/ultimo-tren-norteamerica2.mp4',
         poster: '/posters/ultimo-tren-norteamerica2.webp',
         linkVideoLargo: '/videos/ultimo-tren-norteamerica-trailer.mp4',
-        Label: 'ESPN+ / DISNEY+',
+        Label: 'Disney+',
         credits: [
             { title: 'Client', value: 'ESPN+ / DISNEY+' },
             { title: 'Production Company', value: 'ESPN ORIGINALS / MONKEY LABEL FILMS' },
